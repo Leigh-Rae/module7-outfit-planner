@@ -1,0 +1,868 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #faf8f7;
+    color: #3b2f2f;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* --- Top Bar --- */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2.5rem;
+    background-color: #ffffff;
+    border-bottom: 1px solid #f0eded;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #570857;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.top-bar nav {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.top-bar nav a {
+    text-decoration: none;
+    color: #3b2f2f;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.top-bar nav a.active-link {
+    color: #570857;
+    border-bottom: 2px solid #570857;
+    padding-bottom: 4px;
+}
+
+.top-right-icons {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    color: #3b2f2f;
+}
+
+.add-item-button {
+    background-color: #f7a8bc;
+    color: #3b2f2f;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 400;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* ---First Box After Header---*/
+/*Buttons*/
+.first-box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2.5rem;
+    background-color: #ffffff;
+    margin-top: 20px;
+    margin-left: 45px;
+    margin-right: 45px;
+    min-height: 200px;
+    border-radius: 10px;
+    border: 1px solid #cac9c9;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+}
+
+.first-box-icons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2.5rem;
+    gap: 6px;
+}
+
+.styling-assistant{
+    background-color: #f7a8bc;
+    color: #3b2f2f;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 400;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: fit-content;
+}
+
+.add-clothing-button {
+    background-color: #f7a8bc;
+    color: #3b2f2f;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 400;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.add-clothing-button:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+    transform: translateY(-2px);
+}
+
+.create-outfit-button {
+    background-color: #fcf2cc;
+    color: #3b2f2f;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 400;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.create-outfit-button:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+    transform: translateY(-2px);
+}
+
+.plan-outfit-button {
+    background-color: #ffffff;
+    border: 1px solid #cac9c9;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.09);
+    color: #3b2f2f;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 400;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.plan-outfit-button:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+    transform: translateY(-2px);
+}
+
+/*Second Part after firstbox after header */
+/*--Clothing Record Boxes*/
+.clothing-record-boxes{
+    margin-top: 20px;
+    margin-left: 45px;
+    margin-right: 45px;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.box1, .box2, .box3, .box4 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.1rem 1rem;
+    background-color: #ffffff;
+    margin-top: 20px;
+    height: 100px;
+    flex: 1;
+    border-radius: 10px;
+    border: 1px solid #cac9c9;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+}
+
+.wardrobe-icon{
+    background-color: #f7a8bc;
+    border-radius: 50px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.sparkle-icon{
+    background-color: #faeec2;
+    border-radius: 50px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.calendar-icon{
+    background-color: #dfc9ce;
+    border-radius: 50px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.heart-icon{
+    background-color: #f7a8bc;
+    border-radius: 50px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    padding-top: 10px;
+}
+
+/*---Big Middle Box----*/
+.second-box{
+    padding: 1rem 2.5rem;
+    background-color: #ffffff;
+    margin-top: 20px;
+    margin-left: 45px;
+    margin-right: 45px;
+    min-height: 700px;
+    border-radius: 10px;
+    border: 1px solid #cac9c9;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+}
+
+.second-part-second-box{
+    display: flex;
+    justify-content: space-between;
+}
+
+.second-box-icons{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 1rem 2.5rem;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.weather{
+    background-color: #fcf2cc;
+    color: #3b2f2f;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 400;
+    font-size: 0.9rem;
+    cursor: pointer;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.worn-today-button{
+    background-color: #f7a8bc;
+    color: #3b2f2f;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 400;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.worn-today-button:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+    transform: translateY(-2px);
+}
+
+.change-outfit-button {
+    background-color: #ffffff;
+    border: 1px solid #f7a8bc;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.09);
+    color: #3b2f2f;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 400;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.change-outfit-button:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+    transform: translateY(-2px);
+}
+
+.favourites-button {
+    background-color: #eebfcb;
+    border: 1px solid #f7a8bc;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.09);
+    color: #3b2f2f;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 400;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.favourites-button:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+    transform: translateY(-2px);
+}
+
+/*Second Boxes Inside big box*/
+.all-clothing-boxes{
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.clothing-boxes:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+    transform: translateY(-2px);
+}
+
+.clothing-boxes{
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    border: 1px solid #3b2f2f;
+    background-color: #faf8f7;
+    padding: 20px 20px;
+    border-radius: 10px;
+    flex: 1;
+    min-width: 250px;
+    min-height: 450px;
+}
+
+.inside-box{
+    display: flex;
+    justify-content: space-between;
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 10px 20px;
+    min-height: 300px;
+    align-items: center;
+    gap: 10px;
+}
+
+.inside-box img{
+    max-width: 100%;
+    height: auto;
+}
+
+.inside-box p{
+    margin-top: 0;
+}
+
+/* --- Section Container --- */
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 24px;
+}
+
+.header-text h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0 0 6px 0;
+    letter-spacing: -0.5px;
+}
+
+.header-text p {
+    font-size: 14px;
+    color: #7A7672;
+    margin: 0;
+}
+
+.view-all-link {
+    font-size: 14px;
+    color: #7A7672;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.view-all-link:hover {
+    color: #2D2A26;
+}
+
+/* --- Suggestions Section --- */
+.suggestions-section{
+    margin-left: 45px;
+    margin-right: 45px;
+    margin-top: 40px;
+}
+
+/* --- Grid Layout --- */
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+}
+
+/* --- Card Styles --- */
+.suggestion-card {
+    background-color: #FFFFFF;
+    border: 1px solid #EBE9E6;
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.suggestion-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+    transform: translateY(-2px);
+}
+
+/* --- Card Top (Tags & Icons) --- */
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.tag {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 20px;
+}
+
+.tag-pink {
+    background-color: #FCE8E9;
+    color: #9C5B66;
+}
+
+.tag-yellow {
+    background-color: #F8F3D6;
+    color: #8A7A3C;
+}
+
+.tag-grey {
+    background-color: #F0EEEC;
+    color: #6A6764;
+}
+
+.heart-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #7A7672;
+    font-size: 20px;
+    line-height: 1;
+    padding: 0;
+    transition: color 0.2s ease;
+}
+
+.heart-btn:hover {
+    color: #D85A71;
+}
+
+/* --- Card Info (Text) --- */
+.card-info {
+    margin-bottom: 16px;
+}
+
+.card-info h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 6px 0;
+}
+
+.card-info p {
+    font-size: 13px;
+    color: #7A7672;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* --- Card Images --- */
+.card-images {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.img-placeholder img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.img-placeholder {
+    background-color: #F5F4F2;
+    border-radius: 8px;
+    aspect-ratio: 1 / 1;
+    border: 1px solid #EBE9E6;
+    overflow: hidden;
+}
+
+/* --- Card Actions (Buttons) --- */
+.card-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: auto;
+}
+
+.btn-primary {
+    flex: 1;
+    background-color: #F4B6C2;
+    color: #FFFFFF;
+    border: none;
+    padding: 12px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: #EAA4B1;
+}
+
+.btn-secondary {
+    background-color: #FFFFFF;
+    color: #2D2A26;
+    border: 1px solid #EBE9E6;
+    padding: 12px 24px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #F9F8F6;
+}
+
+/* --- Bottom Bar --- */
+.bottom-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2.5rem;
+    background-color: #ffffff;
+    border-top: 1px solid #f0eded;
+    font-size: 0.85rem;
+    color: #777;
+}
+
+.bottom-bar a {
+    text-decoration: none;
+    color: #777;
+    margin-left: 1.5rem;
+}
+
+footer{
+    margin-top: 60px;
+}
+
+
+/* ===============================
+   MEDIA QUERIES
+   =============================== */
+
+/* --- Large tablets / small laptops --- */
+@media (max-width: 1200px) {
+    .first-box,
+    .clothing-record-boxes,
+    .second-box,
+    .suggestions-section {
+        margin-left: 25px;
+        margin-right: 25px;
+    }
+
+    .clothing-record-boxes {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .box1, .box2, .box3, .box4 {
+        flex: 1 1 calc(50% - 20px);
+        height: auto;
+        min-height: 100px;
+        padding: 1rem;
+    }
+
+    .all-clothing-boxes {
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .clothing-boxes {
+        flex: 1 1 calc(50% - 20px);
+        min-height: auto;
+    }
+
+    .cards-container {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+}
+
+/* --- Tablets --- */
+@media (max-width: 900px) {
+    .top-bar {
+        flex-wrap: wrap;
+        gap: 1rem;
+        padding: 1rem 1.5rem;
+    }
+
+    .top-bar nav {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        order: 3;
+    }
+
+    .first-box {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+        padding: 1.5rem;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .first-box-icons {
+        padding: 0;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: flex-start;
+    }
+
+    .second-box {
+        padding: 1.5rem;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .second-part-second-box {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .second-box-icons {
+        padding: 0;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: flex-start;
+    }
+
+    .box1, .box2, .box3, .box4 {
+        flex: 1 1 100%;
+    }
+
+    .clothing-boxes {
+        flex: 1 1 100%;
+    }
+
+    .suggestions-section {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .cards-container {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+}
+
+/* --- Mobile --- */
+@media (max-width: 600px) {
+    body {
+        font-size: 15px;
+    }
+
+    .top-bar {
+        padding: 1rem;
+    }
+
+    .logo {
+        font-size: 1rem;
+    }
+
+    .logo img {
+        width: 70px;
+    }
+
+    .top-bar nav {
+        gap: 0.75rem;
+    }
+
+    .top-bar nav a {
+        font-size: 0.85rem;
+    }
+
+    .top-right-icons {
+        gap: 0.75rem;
+    }
+
+    .add-item-button {
+        padding: 8px 14px;
+        font-size: 0.8rem;
+    }
+
+    .first-box,
+    .clothing-record-boxes,
+    .second-box,
+    .suggestions-section {
+        margin-left: 12px;
+        margin-right: 12px;
+        padding: 1rem;
+    }
+
+    .first-box-icons,
+    .second-box-icons {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+    }
+
+    .styling-assistant,
+    .add-clothing-button,
+    .create-outfit-button,
+    .plan-outfit-button,
+    .worn-today-button,
+    .change-outfit-button,
+    .favourites-button {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .clothing-record-boxes {
+        flex-direction: column;
+    }
+
+    .box1, .box2, .box3, .box4 {
+        flex: 1 1 100%;
+        width: 100%;
+    }
+
+    .all-clothing-boxes {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .clothing-boxes {
+        flex: 1 1 100%;
+        width: 100%;
+        min-height: auto;
+    }
+
+    .inside-box {
+        flex-direction: column;
+        width: 100%;
+        min-height: auto;
+        gap: 10px;
+    }
+
+    .inside-box img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .cards-container {
+        grid-template-columns: 1fr;
+    }
+
+    .card-images {
+        gap: 8px;
+    }
+
+    .card-actions {
+        flex-direction: column;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        text-align: center;
+    }
+
+    .bottom-bar {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .bottom-bar a {
+        margin: 0 0.5rem;
+    }
+
+    footer {
+        margin-top: 60px;
+    }
+}
+
+/* --- Very small phones --- */
+@media (max-width: 400px) {
+    .logo {
+        font-size: 0.9rem;
+    }
+
+    .top-bar nav a {
+        font-size: 0.75rem;
+    }
+
+    .add-item-button {
+        padding: 6px 10px;
+        font-size: 0.75rem;
+    }
+
+    h2 {
+        font-size: 1.1rem;
+    }
+
+    .box1 p span,
+    .box2 p span,
+    .box3 p span,
+    .box4 p span {
+        font-size: 30px !important;
+    }
+
+    .header-text h2 {
+        font-size: 20px;
+    }
+
+    .card-info h3 {
+        font-size: 16px;
+    }
+}

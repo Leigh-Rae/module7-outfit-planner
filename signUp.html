@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Outfit Planner - Sign Up</title>
+
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="signUp.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+               
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/0fc67ac136.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <header class="header">
+        <div class="navigation_logo">
+           <p><img src="OP Logo.png" width="100px" alt="Outfit Planner Logo"/>Outfit Planner</p> 
+        </div>
+        <nav>
+            <button><a href="#"><i class="fa-solid fa-graduation-cap"></i> Student Beta</a></button>
+            <a href="#"><i class="fa-regular fa-circle-question"></i> Help</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="bottom-top-header">
+            <h1>Create Your Account</h1>
+            <h3>Start planning and organizing your digital closet today.</h3>
+        </section>
+
+        <form>
+            <div class="form-group">
+                <label for="fullname">Full Name</label>
+                <input 
+                    type="text"
+                    id="fullname"
+                    placeholder="Enter your full name" 
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="email">Student Email</label>     
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="sophia.taylor@nyu.edu"
+                    required 
+                >
+            </div>
+
+            <!-- Password and Confirm Password side by side -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Create a password" required>
+                    <span class="hint-text">At least 8 characters</span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" placeholder="Confirm your password" required>
+                </div>
+            </div>
+
+            <!-- Terms checkbox -->
+            <div class="terms-group">
+                <input type="checkbox" id="terms" required>
+                <label for="terms">I agree to the <a href="#">Terms and Conditions</a></label>
+            </div>
+
+            <!-- Submit Button (This was missing!) -->
+            <button type="submit" class="submit-btn">Create Account</button>
+
+        </form>
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 Outfit Planner. Designed for effortless daily styling.</p>
+        <div id="footer-div">
+            <p><a href="#">Privacy Policy</a></p>
+            <p><a href="#">Terms of Service</a></p>
+            <p><a href="#">Closet Care Guide</a></p>
+            <p><a href="#">Help & Feedback</a></p>
+        </div>
+    </footer>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

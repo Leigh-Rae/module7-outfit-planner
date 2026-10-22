@@ -1,0 +1,572 @@
+/* =========================================
+   GLOBAL RESETS & BASE STYLES
+   ========================================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #faf8f7;
+    color: #3b2f2f;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-bottom: 40px;
+}
+
+/* =========================================
+   TOP HEADER SECTION
+   ========================================= */
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2.5rem;
+    background-color: #ffffff;
+    border-bottom: 1px solid #f0eded;
+}
+
+.website-logo-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #570857;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.website-logo-area img {
+    width: 100px;
+    height: auto;
+}
+
+.main-navigation-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.main-navigation-links a {
+    text-decoration: none;
+    color: #3b2f2f;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.main-navigation-links a.active-page-link {
+    color: #570857;
+    border-bottom: 2px solid #570857;
+    padding-bottom: 4px;
+}
+
+.header-right-side-buttons {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    color: #3b2f2f;
+}
+
+.pink-rounded-button {
+    background-color: #f7a8bc;
+    color: #3b2f2f;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: inherit;
+    transition: all 0.2s ease;
+}
+
+.pink-rounded-button:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+    transform: translateY(-2px);
+}
+
+.header-icon-group {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    color: #3b2f2f;
+    font-size: 1.1rem;
+}
+
+.header-icon-group span {
+    cursor: pointer;
+}
+
+.user-profile-picture {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* =========================================
+   MAIN CONTENT WRAPPER
+   ========================================= */
+.main-content-wrapper {
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 45px;
+}
+
+/* =========================================
+   PAGE TITLE SECTION
+   ========================================= */
+.page-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 25px;
+}
+
+.page-title-text h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 0 0 6px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.heart-icon-pink {
+    color: #f7a8bc;
+}
+
+.grey-page-subtitle {
+    font-size: 14px;
+    color: #7a7672;
+    margin: 0;
+}
+
+/* =========================================
+   FILTER BUTTONS ROW
+   ========================================= */
+.filter-buttons-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.filter-buttons-row-inline {
+    margin-bottom: 0;
+}
+
+.filter-button {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 1px solid #cac9c9;
+    background: #ffffff;
+    color: #3b2f2f;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filter-button:hover {
+    background-color: #faf8f7;
+}
+
+.filter-button.active-filter-button {
+    background-color: #f7a8bc;
+    border-color: #f7a8bc;
+    color: #3b2f2f;
+}
+
+/* =========================================
+   SECTION HEADERS
+   ========================================= */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.section-header h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #3b2f2f;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-count-badge {
+    background-color: #fce8e9;
+    color: #9c5b66;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 12px;
+}
+
+.section-note-text {
+    font-size: 0.8rem;
+    color: #7a7672;
+}
+
+/* =========================================
+   FAVOURITE OUTFITS GRID
+   ========================================= */
+.favourite-outfits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.outfit-card {
+    background-color: #ffffff;
+    border: 1px solid #cac9c9;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.outfit-card-tag-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.outfit-card-tag {
+    font-size: 0.7rem;
+    background-color: #f0eeec;
+    color: #6a6764;
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-weight: 600;
+}
+
+.outfit-heart-icon {
+    color: #f7a8bc;
+}
+
+.outfit-card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #3b2f2f;
+    margin-bottom: 14px;
+}
+
+.outfit-preview-thumbnails {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.outfit-thumbnail-box {
+    flex: 1;
+    height: 80px;
+    background-color: #faf8f7;
+    border: 1px solid #f0eded;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+}
+
+.outfit-item-labels {
+    font-size: 0.7rem;
+    color: #7a7672;
+    margin-bottom: 16px;
+}
+
+.outfit-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px solid #f0eded;
+}
+
+.outfit-worn-text {
+    font-size: 0.75rem;
+    color: #7a7672;
+}
+
+.outfit-card-buttons-group {
+    display: flex;
+    gap: 8px;
+}
+
+.outfit-card-button {
+    background-color: #fce8e9;
+    color: #3b2f2f;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 15px;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.outfit-card-button:hover {
+    background-color: #f7a8bc;
+}
+
+/* =========================================
+   FAVOURITE ITEMS GRID
+   ========================================= */
+.favourite-items-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 30px;
+}
+
+.item-card {
+    background-color: #ffffff;
+    border: 1px solid #cac9c9;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+}
+
+.favourite-heart-button {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #ffffff;
+    border: 1px solid #f0eded;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f7a8bc;
+    font-size: 0.9rem;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.item-image {
+    width: 100%;
+    height: 180px;
+    background-color: #faf8f7;
+    border-bottom: 1px solid #f0eded;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+}
+
+.item-text-area {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.item-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #3b2f2f;
+    margin-bottom: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.item-details {
+    font-size: 0.75rem;
+    color: #7a7672;
+    margin-bottom: 14px;
+}
+
+.item-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid #f0eded;
+}
+
+.item-wear-count {
+    font-size: 0.7rem;
+    color: #7a7672;
+}
+
+.add-to-outfit-button {
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: 0.75rem;
+    color: #3b2f2f;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+}
+
+.add-to-outfit-button:hover {
+    color: #f7a8bc;
+}
+
+/* =========================================
+   WARDROBE TIP BANNER
+   ========================================= */
+.wardrobe-tip-banner {
+    background-color: #fdf6e3;
+    border: 1px solid #f2d06b;
+    border-radius: 10px;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.tip-text-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.tip-icon {
+    font-size: 1.2rem;
+}
+
+.tip-text {
+    font-size: 0.85rem;
+    color: #7a5e2e;
+}
+
+.tip-text strong {
+    color: #3b2f2f;
+}
+
+.tip-action-button {
+    background-color: #ffffff;
+    border: 1px solid #cac9c9;
+    padding: 8px 16px;
+    border-radius: 15px;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #3b2f2f;
+    cursor: pointer;
+}
+
+/* =========================================
+   FOOTER SECTION
+   ========================================= */
+.bottom-footer {
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1.5rem 2.5rem;
+    border-top: 1px solid #f0eded;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: #7a7672;
+    margin-top: 40px;
+}
+
+.footer-logo-text {
+    font-weight: 700;
+    color: #570857;
+    font-size: 1rem;
+}
+
+.footer-copyright-text {
+    margin: 0;
+}
+
+.footer-links-list {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.footer-links-list a {
+    text-decoration: none;
+    color: #7a7672;
+    transition: color 0.2s ease;
+}
+
+.footer-links-list a:hover {
+    color: #3b2f2f;
+}
+
+/* =========================================
+   RESPONSIVE MEDIA QUERIES
+   ========================================= */
+@media (max-width: 1200px) {
+    .main-content-wrapper { padding: 0 25px; }
+    .favourite-outfits-grid { grid-template-columns: repeat(2, 1fr); }
+    .favourite-items-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 900px) {
+    .top-header {
+        flex-wrap: wrap;
+        gap: 1rem;
+        padding: 1rem 1.5rem;
+    }
+    .main-navigation-links {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        order: 3;
+    }
+    .page-title-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    .favourite-outfits-grid { grid-template-columns: 1fr; }
+    .favourite-items-grid { grid-template-columns: repeat(2, 1fr); }
+    .wardrobe-tip-banner {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    .bottom-footer {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    .footer-links-list { justify-content: center; }
+}
+
+@media (max-width: 600px) {
+    .main-content-wrapper { padding: 0 12px; }
+    .top-header { padding: 1rem; }
+    .main-navigation-links { gap: 0.75rem; }
+    .main-navigation-links a { font-size: 0.85rem; }
+    .header-right-side-buttons { gap: 0.75rem; }
+    .pink-rounded-button { padding: 8px 14px; font-size: 0.8rem; }
+    .favourite-items-grid { grid-template-columns: 1fr; }
+    .bottom-footer { padding: 1rem; }
+    .footer-links-list { flex-direction: column; gap: 10px; }
+}

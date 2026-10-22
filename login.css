@@ -1,0 +1,345 @@
+/* --- Base & Reset --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #faf8f7;
+    color: #3b2f2f;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* --- Header --- */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2.5rem;
+    background-color: #ffffff;
+    border-bottom: 1px solid #f0eded;
+}
+
+.navigation_logo p {
+    color: #570857;
+    font-size: larger;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header a { 
+    text-decoration: none;
+    color: black;
+}
+
+.header button {
+    background-color: #fcf2cc;
+    color: #8a7324;
+    padding: 6px 14px;
+    border: none;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* --- Main Layout (Centers the form) --- */
+.body {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 1rem;
+}
+
+/* --- Form Card --- */
+.login-info {
+    background-color: #ffffff;
+    border: 1px solid #f0eded;
+    border-radius: 16px;
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+}
+
+/* --- Welcome Header --- */
+#welcome {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.logo-box {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    background-color: #fdfaf9;
+    border: 1px solid #f0eded;
+    border-radius: 16px;
+    margin-bottom: 1rem;
+}
+
+#welcome h1 {
+    font-size: 1.75rem;
+    color: #222;
+    margin-bottom: 0.5rem;
+}
+
+#welcome h3 {
+    color: #777;
+    font-weight: 400;
+    font-size: 0.95rem;
+}
+
+/* --- Form Inputs --- */
+.form-box {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.25rem;
+}
+
+.form-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #444;
+}
+
+.form-label a {
+    font-size: 0.8rem;
+    color: #777;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.form-label a:hover {
+    color: #570857;
+}
+
+form input[type="email"],
+form input[type="password"] {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #e0dcd9;
+    border-radius: 10px;
+    background-color: #faf9f8;
+    font-size: 0.95rem;
+    font-family: inherit;
+    color: #333;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+form input:focus {
+    border-color: #f0cdd5;
+    background-color: #ffffff;
+}
+
+/* --- Custom Checkbox --- */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.checkbox-group input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #d1ccc9;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    display: grid;
+    place-content: center;
+    flex-shrink: 0;
+}
+
+.checkbox-group input[type="checkbox"]:checked {
+    background-color: #f0cdd5;
+    border-color: #f0cdd5;
+}
+
+.checkbox-group input[type="checkbox"]::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em #5c4545;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+.checkbox-group input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
+
+.checkbox-group label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #555;
+    cursor: pointer;
+}
+
+/* --- Log In Button --- */
+.login-btn {
+    width: 100%;
+    background-color: #f7a8bc;
+    color: #3b2f2f;
+    border: none;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s;
+    margin-bottom: 1.5rem;
+}
+
+.login-btn:hover {
+    background-color: #f0cdd5;
+}
+
+/* --- Divider --- */
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #777;
+    font-size: 0.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #e0dcd9;
+}
+
+.divider span {
+    padding: 0 10px;
+}
+
+/* --- SSO Buttons --- */
+.sso-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.sso-buttons #btn {
+    flex: 1;
+    background-color: #ffffff;
+    border: 1px solid #e0dcd9;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    font-family: inherit;
+    color: #3b2f2f;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s;
+}
+
+.sso-buttons #btn:hover {
+    background-color: #fdf8f7;
+}
+
+/* --- Sign Up Link --- */
+.sign-up {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.sign-up a {
+    color: #570857;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+/* --- Footer --- */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2.5rem;
+    background-color: #ffffff;
+    border-top: 1px solid #f0eded;
+    font-size: 0.85rem;
+    color: #777;
+}
+
+.footer a {
+    text-decoration: none;
+    color: #777;
+    transition: color 0.2s;
+}
+
+.footer a:hover {
+    color: #3b2f2f;
+}
+
+#footer-div {
+    display: flex;
+    gap: 1.5rem;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 600px) {
+    .header, .footer {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .form-card, .login-info {
+        padding: 1.5rem;
+    }
+    
+    .sso-buttons {
+        flex-direction: column;
+    }
+    
+    #footer-div {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+
+
+
+

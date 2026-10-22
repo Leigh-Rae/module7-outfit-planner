@@ -1,0 +1,670 @@
+/* =========================================
+   GLOBAL RESETS & BASE STYLES
+   ========================================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #faf8f7;
+    color: #3b2f2f;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-bottom: 40px;
+}
+
+/* =========================================
+   TOP HEADER SECTION
+   ========================================= */
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2.5rem;
+    background-color: #ffffff;
+    border-bottom: 1px solid #f0eded;
+}
+
+.website-logo-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #570857;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.website-logo-area img {
+    width: 100px;
+    height: auto;
+}
+
+.main-navigation-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.main-navigation-links a {
+    text-decoration: none;
+    color: #3b2f2f;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.main-navigation-links a.active-page-link {
+    color: #570857;
+    border-bottom: 2px solid #570857;
+    padding-bottom: 4px;
+}
+
+.header-right-side-buttons {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    color: #3b2f2f;
+}
+
+.pink-rounded-button {
+    background-color: #f7a8bc;
+    color: #3b2f2f;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: inherit;
+    transition: all 0.2s ease;
+}
+
+.pink-rounded-button:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+    transform: translateY(-2px);
+}
+
+.outline-rounded-button {
+    background-color: #ffffff;
+    color: #3b2f2f;
+    border: 1px solid #cac9c9;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: inherit;
+    transition: all 0.2s ease;
+}
+
+.outline-rounded-button:hover {
+    background-color: #faf8f7;
+}
+
+.header-icon-group {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    color: #3b2f2f;
+    font-size: 1.1rem;
+}
+
+.header-icon-group span {
+    cursor: pointer;
+}
+
+.user-profile-picture {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* =========================================
+   MAIN CONTENT WRAPPER
+   ========================================= */
+.main-content-wrapper {
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 45px;
+}
+
+/* =========================================
+   PROFILE HERO SECTION
+   ========================================= */
+.profile-hero-card {
+    background-color: #ffffff;
+    border: 1px solid #cac9c9;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+    padding: 30px;
+    margin-top: 30px;
+    margin-bottom: 24px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 30px;
+    align-items: center;
+}
+
+.profile-hero-avatar-area {
+    position: relative;
+}
+
+.profile-hero-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #f7a8bc;
+}
+
+.edit-avatar-button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: #ffffff;
+    border: 1px solid #cac9c9;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.edit-avatar-button:hover {
+    background-color: #f7a8bc;
+    border-color: #f7a8bc;
+}
+
+.profile-hero-info h1 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #3b2f2f;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+}
+
+.verified-badge {
+    background-color: #fce8e9;
+    color: #9c5b66;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 12px;
+    text-transform: uppercase;
+}
+
+.profile-username {
+    font-size: 0.85rem;
+    color: #7a7672;
+    margin-bottom: 12px;
+}
+
+.profile-bio {
+    font-size: 0.9rem;
+    color: #3b2f2f;
+    line-height: 1.5;
+    margin-bottom: 16px;
+    max-width: 620px;
+}
+
+.profile-hero-meta-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.profile-meta-item {
+    font-size: 0.8rem;
+    color: #7a7672;
+}
+
+.profile-hero-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* =========================================
+   STATS ROW
+   ========================================= */
+.stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background-color: #ffffff;
+    border: 1px solid #cac9c9;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.stat-value {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #570857;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: #7a7672;
+    font-weight: 500;
+}
+
+/* =========================================
+   TWO COLUMN DETAILS LAYOUT
+   ========================================= */
+.profile-two-column-layout {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 24px;
+    align-items: start;
+}
+
+/* =========================================
+   PANELS (used in both columns)
+   ========================================= */
+.profile-panel {
+    background-color: #ffffff;
+    border: 1px solid #cac9c9;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+.profile-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+    border-bottom: 1px solid #f0eded;
+    padding-bottom: 12px;
+}
+
+.profile-panel-header h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #3b2f2f;
+}
+
+.small-text-action-button {
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: 0.8rem;
+    color: #7a7672;
+    cursor: pointer;
+    padding: 0;
+    text-decoration: underline;
+    transition: color 0.2s ease;
+}
+
+.small-text-action-button:hover {
+    color: #570857;
+}
+
+.section-count-badge {
+    background-color: #fce8e9;
+    color: #9c5b66;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 12px;
+}
+
+/* =========================================
+   INFO GRID (Personal info / Measurements)
+   ========================================= */
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 24px;
+}
+
+.info-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.info-label {
+    font-size: 0.75rem;
+    color: #7a7672;
+    font-weight: 500;
+}
+
+.info-value {
+    font-size: 0.9rem;
+    color: #3b2f2f;
+    font-weight: 600;
+}
+
+/* =========================================
+   PREFERENCES BLOCK
+   ========================================= */
+.preferences-block {
+    margin-bottom: 20px;
+}
+
+.preferences-block:last-child {
+    margin-bottom: 0;
+}
+
+.preference-group-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #7a7672;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+
+.preference-tag-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.preference-tag {
+    background-color: #faf8f7;
+    border: 1px solid #f0eded;
+    color: #3b2f2f;
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 20px;
+}
+
+.colour-swatch-tag {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background-color: #faf8f7;
+    border: 1px solid #f0eded;
+    color: #3b2f2f;
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 20px;
+}
+
+.colour-dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid #cac9c9;
+}
+
+/* =========================================
+   ACCOUNT USAGE
+   ========================================= */
+.account-usage-list {
+    margin-bottom: 20px;
+}
+
+.account-usage-list:last-child {
+    margin-bottom: 0;
+}
+
+.account-usage-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 8px;
+}
+
+.account-usage-text strong {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #3b2f2f;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.item-meta {
+    font-size: 0.7rem;
+    color: #7a7672;
+}
+
+.usage-percent {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #570857;
+}
+
+.usage-progress-bar {
+    width: 100%;
+    height: 6px;
+    background-color: #f0eeec;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.usage-progress-fill {
+    height: 100%;
+    background-color: #f7a8bc;
+    border-radius: 3px;
+    transition: width 0.4s ease;
+}
+
+/* =========================================
+   BADGE LIST
+   ========================================= */
+.badge-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.badge-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    background-color: #faf8f7;
+    border: 1px solid #f0eded;
+    border-radius: 8px;
+}
+
+.badge-icon {
+    font-size: 1.4rem;
+    width: 36px;
+    height: 36px;
+    background-color: #ffffff;
+    border: 1px solid #f0eded;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.badge-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.badge-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #3b2f2f;
+}
+
+.badge-desc {
+    font-size: 0.7rem;
+    color: #7a7672;
+}
+
+/* =========================================
+   ACTIVITY LIST
+   ========================================= */
+.activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.activity-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.activity-icon {
+    font-size: 1rem;
+    width: 32px;
+    height: 32px;
+    background-color: #faf8f7;
+    border: 1px solid #f0eded;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.activity-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.activity-text strong {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #3b2f2f;
+}
+
+/* =========================================
+   FOOTER SECTION
+   ========================================= */
+.bottom-footer {
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1.5rem 2.5rem;
+    border-top: 1px solid #f0eded;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: #7a7672;
+    margin-top: 40px;
+}
+
+.footer-logo-text {
+    font-weight: 700;
+    color: #570857;
+    font-size: 1rem;
+}
+
+.footer-copyright-text {
+    margin: 0;
+}
+
+.footer-links-list {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.footer-links-list a {
+    text-decoration: none;
+    color: #7a7672;
+    transition: color 0.2s ease;
+}
+
+.footer-links-list a:hover {
+    color: #3b2f2f;
+}
+
+/* =========================================
+   RESPONSIVE MEDIA QUERIES
+   ========================================= */
+@media (max-width: 1200px) {
+    .main-content-wrapper { padding: 0 25px; }
+    .profile-two-column-layout { grid-template-columns: 1fr 340px; }
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 900px) {
+    .top-header {
+        flex-wrap: wrap;
+        gap: 1rem;
+        padding: 1rem 1.5rem;
+    }
+    .main-navigation-links {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        order: 3;
+    }
+    .profile-hero-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .profile-hero-avatar-area {
+        justify-self: center;
+    }
+    .profile-hero-info h1 {
+        justify-content: center;
+    }
+    .profile-hero-meta-row {
+        justify-content: center;
+    }
+    .profile-hero-actions {
+        flex-direction: row;
+        justify-content: center;
+    }
+    .profile-two-column-layout {
+        grid-template-columns: 1fr;
+    }
+    .bottom-footer {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    .footer-links-list { justify-content: center; }
+}
+
+@media (max-width: 600px) {
+    .main-content-wrapper { padding: 0 12px; }
+    .top-header { padding: 1rem; }
+    .main-navigation-links { gap: 0.75rem; }
+    .main-navigation-links a { font-size: 0.85rem; }
+    .header-right-side-buttons { gap: 0.75rem; }
+    .pink-rounded-button { padding: 8px 14px; font-size: 0.8rem; }
+    .stats-row { grid-template-columns: 1fr; }
+    .info-grid { grid-template-columns: 1fr; }
+    .profile-hero-card { padding: 20px; }
+    .profile-panel { padding: 18px; }
+    .bottom-footer { padding: 1rem; }
+    .footer-links-list { flex-direction: column; gap: 10px; }
+}

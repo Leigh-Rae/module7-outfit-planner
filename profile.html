@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outfit Planner - My Profile</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="Profile.css">
+
+     <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/0fc67ac136.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+    <!-- TOP HEADER SECTION -->
+    <header class="top-header">
+        <div class="website-logo-area">
+            <img src="OP Logo.png" alt="Outfit Planner Logo"/> Outfit Planner
+        </div>
+        
+        <nav class="main-navigation-links">
+            <a href="home.html">Home</a>
+            <a href="MyWardrobe.html">Wardrobe</a>
+            <a href="outfit.html">Outfits</a>
+            <a href="planner.html">Planner</a>
+            <a href="favourites.html">Favourites</a>
+            <a href="profile.html" class="active-page-link">Profile</a>
+        </nav>
+
+        <div class="header-right-side-buttons">
+            <button class="pink-rounded-button">+ Add Item</button>
+            <div class="header-icon-group">
+               <span> <i class="fa-regular fa-bell"></i> </span>
+                <span> <i class="fa-regular fa-heart"></i> </span>
+            </div>
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=60" alt="User Profile Picture" class="user-profile-picture">
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content-wrapper">
+        
+        <!-- PROFILE HERO SECTION -->
+        <div class="profile-hero-card">
+            <div class="profile-hero-avatar-area">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&auto=format&fit=crop&q=80" alt="User Avatar" class="profile-hero-avatar">
+                <button class="edit-avatar-button" title="Change picture">📷</button>
+            </div>
+
+            <div class="profile-hero-info">
+                <h1>Emily Johnson <span class="verified-badge">✓ Verified</span></h1>
+                <p class="profile-username">@emily.styles · Cape Town, South Africa</p>
+                <p class="profile-bio">Final-year design student building a conscious capsule wardrobe. Lover of neutral tones, vintage denim, and iced matcha on campus. 🌿</p>
+
+                <div class="profile-hero-meta-row">
+                    <span class="profile-meta-item">📅 Joined September 2026</span>
+                    <span class="profile-meta-item">👗 Style: Minimalist / Casual</span>
+                    <span class="profile-meta-item">⭐ Top 5% Active Planner</span>
+                </div>
+            </div>
+
+            <div class="profile-hero-actions">
+                <button class="pink-rounded-button">✏️ Edit Profile</button>
+                <button class="outline-rounded-button">⚙️ Settings</button>
+            </div>
+        </div>
+
+        <!-- STYLE STATS ROW -->
+        <div class="stats-row">
+            <div class="stat-card">
+                <span class="stat-value">42</span>
+                <span class="stat-label">Items in Wardrobe</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-value">18</span>
+                <span class="stat-label">Saved Outfits</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-value">124</span>
+                <span class="stat-label">Days Planned</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-value">3.5 hrs</span>
+                <span class="stat-label">Time Saved This Month</span>
+            </div>
+        </div>
+
+        <!-- TWO COLUMN DETAILS LAYOUT -->
+        <div class="profile-two-column-layout">
+
+            <!-- LEFT COLUMN -->
+            <div class="profile-left-column">
+
+                <!-- Personal Information Panel -->
+                <div class="profile-panel">
+                    <div class="profile-panel-header">
+                        <h2>Personal Information</h2>
+                        <button class="small-text-action-button">Edit</button>
+                    </div>
+
+                    <div class="info-grid">
+                        <div class="info-field">
+                            <span class="info-label">Full Name</span>
+                            <span class="info-value">Emily Grace Johnson</span>
+                        </div>
+                        <div class="info-field">
+                            <span class="info-label">Email Address</span>
+                            <span class="info-value">emily.johnson@campus.edu</span>
+                        </div>
+                        <div class="info-field">
+                            <span class="info-label">Phone Number</span>
+                            <span class="info-value">+27 82 555 0142</span>
+                        </div>
+                        <div class="info-field">
+                            <span class="info-label">Date of Birth</span>
+                            <span class="info-value">14 March 2004</span>
+                        </div>
+                        <div class="info-field">
+                            <span class="info-label">Location</span>
+                            <span class="info-value">Cape Town, WC</span>
+                        </div>
+                        <div class="info-field">
+                            <span class="info-label">Language</span>
+                            <span class="info-value">English (UK)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Style Preferences Panel -->
+                <div class="profile-panel">
+                    <div class="profile-panel-header">
+                        <h2>Style Preferences</h2>
+                        <button class="small-text-action-button">Edit</button>
+                    </div>
+
+                    <div class="preferences-block">
+                        <span class="preference-group-label">Favourite Colours</span>
+                        <div class="preference-tag-row">
+                            <span class="colour-swatch-tag"><span class="colour-dot" style="background-color: #3b2f2f;"></span> Black</span>
+                            <span class="colour-swatch-tag"><span class="colour-dot" style="background-color: #fce8e9;"></span> Cream</span>
+                            <span class="colour-swatch-tag"><span class="colour-dot" style="background-color: #f7a8bc;"></span> Pastel Pink</span>
+                            <span class="colour-swatch-tag"><span class="colour-dot" style="background-color: #7a7672;"></span> Grey</span>
+                            <span class="colour-swatch-tag"><span class="colour-dot" style="background-color: #b8d4e8;"></span> Sky Blue</span>
+                        </div>
+                    </div>
+
+                    <div class="preferences-block">
+                        <span class="preference-group-label">Preferred Styles</span>
+                        <div class="preference-tag-row">
+                            <span class="preference-tag">Minimalist</span>
+                            <span class="preference-tag">Casual Chic</span>
+                            <span class="preference-tag">Capsule Wardrobe</span>
+                            <span class="preference-tag">Vintage</span>
+                            <span class="preference-tag">Campus Casual</span>
+                        </div>
+                    </div>
+
+                    <div class="preferences-block">
+                        <span class="preference-group-label">Favourite Occasions</span>
+                        <div class="preference-tag-row">
+                            <span class="preference-tag">Campus / University</span>
+                            <span class="preference-tag">Coffee Dates</span>
+                            <span class="preference-tag">Weekend Markets</span>
+                            <span class="preference-tag">Study Sessions</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Body & Measurements Panel -->
+                <div class="profile-panel">
+                    <div class="profile-panel-header">
+                        <h2>Body & Measurements</h2>
+                        <button class="small-text-action-button">Update</button>
+                    </div>
+
+                    <div class="info-grid">
+                        <div class="info-field">
+                            <span class="info-label">Height</span>
+                            <span class="info-value">165 cm</span>
+                        </div>
+                        <div class="info-field">
+                            <span class="info-label">Weight</span>
+                            <span class="info-value">58 kg</span>
+                        </div>
+                        <div class="info-field">
+                            <span class="info-label">Top Size</span>
+                            <span class="info-value">S / UK 8</span>
+                        </div>
+                        <div class="info-field">
+                            <span class="info-label">Bottom Size</span>
+                            <span class="info-value">28 / UK 8</span>
+                        </div>
+                        <div class="info-field">
+                            <span class="info-label">Shoe Size</span>
+                            <span class="info-value">UK 5 / EU 38</span>
+                        </div>
+                        <div class="info-field">
+                            <span class="info-label">Body Type</span>
+                            <span class="info-value">Athletic / Balanced</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- RIGHT COLUMN -->
+            <div class="profile-right-column">
+
+                <!-- Account Overview Panel -->
+                <div class="profile-panel">
+                    <div class="profile-panel-header">
+                        <h2>Account Overview</h2>
+                    </div>
+
+                    <div class="account-usage-list">
+                        <div class="account-usage-row">
+                            <div class="account-usage-text">
+                                <strong>Wardrobe Capacity</strong>
+                                <span class="item-meta">42 of 75 items used</span>
+                            </div>
+                            <span class="usage-percent">56%</span>
+                        </div>
+                        <div class="usage-progress-bar">
+                            <div class="usage-progress-fill" style="width: 56%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="account-usage-list">
+                        <div class="account-usage-row">
+                            <div class="account-usage-text">
+                                <strong>Weekly Plan Consistency</strong>
+                                <span class="item-meta">5 of 7 days planned this week</span>
+                            </div>
+                            <span class="usage-percent">71%</span>
+                        </div>
+                        <div class="usage-progress-bar">
+                            <div class="usage-progress-fill" style="width: 71%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="account-usage-list">
+                        <div class="account-usage-row">
+                            <div class="account-usage-text">
+                                <strong>Capsule Completion</strong>
+                                <span class="item-meta">Good coverage across all categories</span>
+                            </div>
+                            <span class="usage-percent">82%</span>
+                        </div>
+                        <div class="usage-progress-bar">
+                            <div class="usage-progress-fill" style="width: 82%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Achievement Badges Panel -->
+                <div class="profile-panel">
+                    <div class="profile-panel-header">
+                        <h2>Achievements</h2>
+                        <span class="section-count-badge">4 earned</span>
+                    </div>
+
+                    <div class="badge-list">
+                        <div class="badge-item">
+                            <div class="badge-icon">🌟</div>
+                            <div class="badge-text">
+                                <span class="badge-name">Consistent Planner</span>
+                                <span class="badge-desc">Planned 30 days in a row</span>
+                            </div>
+                        </div>
+                        <div class="badge-item">
+                            <div class="badge-icon">🌿</div>
+                            <div class="badge-text">
+                                <span class="badge-name">Capsule Starter</span>
+                                <span class="badge-desc">Reached 40+ items in wardrobe</span>
+                            </div>
+                        </div>
+                        <div class="badge-item">
+                            <div class="badge-icon">💗</div>
+                            <div class="badge-text">
+                                <span class="badge-name">Favourites Curator</span>
+                                <span class="badge-desc">Saved 10+ outfits to favourites</span>
+                            </div>
+                        </div>
+                        <div class="badge-item">
+                            <div class="badge-icon">☕</div>
+                            <div class="badge-text">
+                                <span class="badge-name">Early Riser</span>
+                                <span class="badge-desc">Outfit picked before 8 AM ten times</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity Panel -->
+                <div class="profile-panel">
+                    <div class="profile-panel-header">
+                        <h2>Recent Activity</h2>
+                    </div>
+
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <span class="activity-icon">👗</span>
+                            <div class="activity-text">
+                                <strong>Added "Cream Ribbed Cardigan"</strong>
+                                <span class="item-meta">2 hours ago</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-icon">📅</span>
+                            <div class="activity-text">
+                                <strong>Planned outfit for Thursday</strong>
+                                <span class="item-meta">Yesterday</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-icon">♥</span>
+                            <div class="activity-text">
+                                <strong>Favourited "Cosy Campus Casual"</strong>
+                                <span class="item-meta">3 days ago</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-icon">✏️</span>
+                            <div class="activity-text">
+                                <strong>Updated measurements</strong>
+                                <span class="item-meta">1 week ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER SECTION -->
+    <footer class="bottom-footer">
+        <div class="footer-logo-text">Outfit Planner</div>
+        <p class="footer-copyright-text">© 2024 Outfit Planner. Designed for effortless daily styling.</p>
+        <div class="footer-links-list">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Client Care Guide</a>
+            <a href="#">Help & Feedback</a>
+        </div>
+    </footer>
+
+</body>
+</html>

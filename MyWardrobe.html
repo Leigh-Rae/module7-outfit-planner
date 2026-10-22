@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Wardrobe Page</title>
+    
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="MyWardrobe.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+               
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/0fc67ac136.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+    <!-- TOP HEADER SECTION -->
+    <header class="top-header">
+       <div class="logo">
+            <img src="OP Logo.png" width="100px" alt="Outfit Planner Logo"/> Outfit Planner
+        </div>
+        
+        <nav class="main-navigation">
+            <a href="home.html">Home</a>
+            <a href="MyWardrobe.html" class="active-link">Wardrobe</a>
+            <a href="outfit.html">Outfits</a>
+            <a href="planner.html">Planner</a>
+            <a href="favourites.html">Favourites</a>
+            <a href="profile.html">Profile</a>
+        </nav>
+
+        <div class="header-buttons">
+            <button class="pink-button">+ Add Item</button>
+          <div class="top-right-icons">
+            <i class="fa-regular fa-bell"></i>
+            <i class="fa-regular fa-heart"></i>
+        </div>
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=60" alt="User Profile Picture" class="profile-picture">
+        </div>
+    </header>
+
+    <main class="main-content">
+        
+        <!-- PAGE TITLE SECTION -->
+        <div class="page-title-row">
+            <div class="title-text">
+                <h1>My Wardrobe <span class="pink-badge">Active Closet</span></h1>
+                <p class="grey-subtitle">All your clothes in one organized closet (42 items total)</p>
+            </div>
+            <button class="pink-button">+ Add Clothing</button>
+        </div>
+
+        <!-- FILTER SECTION -->
+        <div class="filter-box">
+            
+            <!-- Search and Sort Row -->
+            <div class="search-and-sort-row">
+                <input type="text" class="search-input" placeholder="Search your clothes (e.g., striped shirt, jeans)...">
+                <div class="sort-dropdown">
+                    <label>Sort by:</label>
+                    <select>
+                        <option>Recently Added</option>
+                        <option>Most Worn</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Category Buttons Row -->
+            <div class="category-buttons-row">
+                <button class="category-button active-category">All (42)</button>
+                <button class="category-button">Tops (14)</button>
+                <button class="category-button">Bottoms (11)</button>
+                <button class="category-button">Dresses (5)</button>
+                <button class="category-button">Shoes (6)</button>
+                <button class="category-button">Accessories (6)</button>
+            </div>
+
+            <!-- Dropdown Filters Row -->
+            <div class="dropdown-filters-row">
+                <div class="filter-dropdowns">
+                    <button class="filter-button">Filters</button>
+                    <button class="filter-button">Colour: All Colours</button>
+                    <button class="filter-button">Season: Spring/Summer</button>
+                    <button class="filter-button">Occasion: Casual / College</button>
+                </div>
+                <button class="clear-filters-button">Clear all filters</button>
+            </div>
+        </div>
+
+        <!-- CLOTHING CARDS GRID -->
+        <div class="clothing-cards-grid">
+            
+            <!-- Card 1 -->
+            <div class="card-box">
+                <button class="heart-button" type="button"><i class="fa-regular fa-heart"></i></button>
+                <img src="pinkhoodie.png" alt="Oversized Pastel Pink Hoodie" class="card-image">
+                <div class="card-text-area">
+                    <span class="grey-tag">Top</span>
+                    <h3 class="item-name">Oversized Pastel Pink Hoodie</h3>
+                    <p class="item-details">Spring/Fall • Pastel Pink</p>
+                    <div class="card-bottom-row">
+                        <span class="wear-count">Worn 14 times</span>
+                        <div class="card-action-buttons">
+                            <button class="small-button">Edit</button>
+                            <button class="small-button">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card-box">
+                <button class="heart-button" type="button"><i class="fa-regular fa-heart"></i></button>
+                <img src="highrise-jeans.png" alt="Classic High-Rise Blue Jeans"  class="card-image">
+                <div class="card-text-area">
+                    <span class="grey-tag">Bottom</span>
+                    <h3 class="item-name">Classic High-Rise Blue Jeans</h3>
+                    <p class="item-details">All Seasons • Light Blue</p>
+                    <div class="card-bottom-row">
+                        <span class="wear-count">Worn 28 times</span>
+                        <div class="card-action-buttons">
+                            <button class="small-button">Edit</button>
+                            <button class="small-button">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card-box">
+                <button class="heart-button" type="button"><i class="fa-regular fa-heart"></i></button>
+                <img src="tennis-skirt.png" alt="Pleated Tennis Skirt" class="card-image">
+                <div class="card-text-area">
+                    <span class="grey-tag">Bottom</span>
+                    <h3 class="item-name">Pleated Tennis Skirt</h3>
+                    <p class="item-details">Summer • Crisp White</p>
+                    <div class="card-bottom-row">
+                        <span class="wear-count">Worn 8 times</span>
+                        <div class="card-action-buttons">
+                            <button class="small-button">Edit</button>
+                            <button class="small-button">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="card-box">
+              <button class="heart-button" type="button"><i class="fa-regular fa-heart"></i></button>
+                <img src="canvas court shoes.png" alt="Chunky Canvas Sneakers" class="card-image">
+                <div class="card-text-area">
+                    <span class="grey-tag">Shoes</span>
+                    <h3 class="item-name">Chunky Canvas Sneakers</h3>
+                    <p class="item-details">All Seasons • Ecru/Beige</p>
+                    <div class="card-bottom-row">
+                        <span class="wear-count">Worn 32 times</span>
+                        <div class="card-action-buttons">
+                            <button class="small-button">Edit</button>
+                            <button class="small-button">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="card-box">
+              <button class="heart-button" type="button"><i class="fa-regular fa-heart"></i></button>
+                <img src="creamcardigan.png" alt="Cream Ribbed Knit Cardigan" class="card-image">
+                <div class="card-text-area">
+                    <span class="grey-tag">Top</span>
+                    <h3 class="item-name">Cream Ribbed Knit Cardigan</h3>
+                    <p class="item-details">Autumn/Spring • Cream</p>
+                    <div class="card-bottom-row">
+                        <span class="wear-count">Worn 19 times</span>
+                        <div class="card-action-buttons">
+                            <button class="small-button">Edit</button>
+                            <button class="small-button">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="card-box">
+              <button class="heart-button" type="button"><i class="fa-regular fa-heart"></i></button>
+                <img src="pink floral dress.png" alt="Floral Linen Sundress" class="card-image">
+                <div class="card-text-area">
+                    <span class="grey-tag">Dress</span>
+                    <h3 class="item-name">Floral Linen Sundress</h3>
+                    <p class="item-details">Summer • Floral Mix</p>
+                    <div class="card-bottom-row">
+                        <span class="wear-count">Worn 5 times</span>
+                        <div class="card-action-buttons">
+                            <button class="small-button">Edit</button>
+                            <button class="small-button">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 7 -->
+            <div class="card-box">
+               <button class="heart-button" type="button"><i class="fa-regular fa-heart"></i></button>
+                <img src="vintagebelt.png" alt="Vintage Leather Belt" class="card-image">
+                <div class="card-text-area">
+                    <span class="grey-tag">Accessories</span>
+                    <h3 class="item-name">Vintage Leather Belt</h3>
+                    <p class="item-details">All Season • Cognac Brown</p>
+                    <div class="card-bottom-row">
+                        <span class="wear-count">Worn 21 times</span>
+                        <div class="card-action-buttons">
+                            <button class="small-button">Edit</button>
+                            <button class="small-button">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 8 -->
+            <div class="card-box">
+                <button class="heart-button" type="button"><i class="fa-regular fa-heart"></i></button>
+                <img src="Sneakers.png" alt="Retro White Court Shoes" class="card-image">
+                <div class="card-text-area">
+                    <span class="grey-tag">Shoes</span>
+                    <h3 class="item-name">Retro White Court Shoes</h3>
+                    <p class="item-details">Spring/Summer • White & Pink</p>
+                    <div class="card-bottom-row">
+                        <span class="wear-count">Worn 16 times</span>
+                        <div class="card-action-buttons">
+                            <button class="small-button">Edit</button>
+                            <button class="small-button">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- LOAD MORE SECTION -->
+        <div class="load-more-area">
+            <p class="item-count-text">Showing 8 of 42 items</p>
+            <button class="load-more-button">Load More</button>
+        </div>
+
+    </main>
+
+    <!-- FOOTER SECTION -->
+    <footer class="bottom-footer">
+        <div class="footer-logo">Outfit Planner</div>
+        <p class="footer-copyright">© 2026 Outfit Planner. Designed for effortless daily styling.</p>
+        <div class="footer-links-list">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Client Care Guide</a>
+            <a href="#">Help & Feedback</a>
+        </div>
+    </footer>
+
+</body>
+</html>
