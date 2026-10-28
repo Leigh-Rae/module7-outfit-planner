@@ -133,8 +133,8 @@ body {
     color: #570857;
 }
 
-form input[type="email"],
-form input[type="password"] {
+div input[type="email"],
+div input[type="password"] {
     width: 100%;
     padding: 12px 14px;
     border: 1px solid #e0dcd9;
@@ -147,7 +147,7 @@ form input[type="password"] {
     transition: border-color 0.2s;
 }
 
-form input:focus {
+div input:focus {
     border-color: #f0cdd5;
     background-color: #ffffff;
 }

@@ -5,6 +5,7 @@
 
     <!-- Link to your CSS file -->
     <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="addItemPopup.css">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,15 +42,15 @@
             <p class="styling-assistant"> <img width="20" height="20" src="https://img.icons8.com/ios/50/sparkling.png" alt="sparkling"/>Styling Assistant Active</p>
             <div>
                 <br>
-                <h2> Hi, Sarah!<i class="fa-regular fa-heart fa-beat" style="color: rgb(241, 171, 196);"></i></h2>
+              <h2 id="greeting-name"> Hi there! <i class="fa-regular fa-heart fa-beat" style="color: rgb(241, 171, 196);"></i></h2>
                 <br>
                 <p> What are you wearing today?</p>
             </div>
         </div>
         <div class="first-box-icons">
             <button class="add-clothing-button"><i class="fa-regular fa-circle-user"></i><i class="fa-solid fa-plus"></i> Add Clothing</button>
-            <button class="create-outfit-button"><i class="fa-solid fa-shirt"></i> Create Outfit</button>
-            <button class="plan-outfit-button"><i class="fa-regular fa-calendar-days"></i> Plan Outfit</button>
+            <button class="create-outfit-button"><a href="outfit.html" style="text-decoration: none; color: #5a3939;"><i class="fa-solid fa-shirt"></i> Create Outfit</a></button>
+            <button class="plan-outfit-button"><a href="planner.html" style="text-decoration: none; color: #5a3939;"><i class="fa-regular fa-calendar-days"></i> Plan Outfit</a></button>
         </div>
     </section>
 
@@ -59,7 +60,7 @@
         <div class="box1">
             <div>
                 <p>Wardrobe Items</p>
-                <p> <span style="font-weight: bold; font-size: 40px;">42 </span>items</p>
+                <p> <span id="wardrobe-count" style="font-weight: bold; font-size: 40px;">42 </span>items</p>
             </div>
             <div class="wardrobe-icon">
                 <img width="20" height="20" src="https://img.icons8.com/ios/50/cloakroom.png" alt="cloakroom"/>
@@ -69,7 +70,7 @@
         <div class="box2">
             <div>
                 <p>Saved Outfits</p>
-                <p> <span style="font-weight: bold; font-size: 40px;">12 </span>combos</p>
+                <p> <span id="outfit-count" style="font-weight: bold; font-size: 40px;">12 </span>combos</p>
             </div>
             <div class="sparkle-icon">
                 <img width="20" height="20" src="https://img.icons8.com/ios/50/sparkling.png" alt="sparkling"/>
@@ -79,7 +80,7 @@
         <div class="box3">
             <div>
                 <p>Planned This Week</p>
-                <p> <span style="font-weight: bold; font-size: 40px;">5 </span>days</p>
+                <p> <span id="planned-count" style="font-weight: bold; font-size: 40px;">5 </span>days</p>
             </div>
             <div class="calendar-icon">
                 <img width="20" height="20" src="https://img.icons8.com/material-outlined/24/calendar--v1.png" alt="calendar--v1"/>
@@ -89,7 +90,7 @@
         <div class="box4">
             <div>
                 <p>Favourites</p>
-                <p> <span style="font-weight: bold; font-size: 40px;">8 </span>looks</p>
+                <p> <span id="favourites-count" style="font-weight: bold; font-size: 40px;">8 </span>looks</p>
             </div>
             <div class="heart-icon">
                 <img width="20" height="20" src="https://img.icons8.com/fluency-systems-regular/50/like.png" alt="like"/>
@@ -102,7 +103,7 @@
     <section class="second-box">
         <div>
             <div>
-                <p class="weather"> <img width="21" height="21" src="https://img.icons8.com/ios/50/sun--v1.png" alt="sun--v1"/>Wednesday, October 12, 2026</p>
+                <p class="weather" id="today-date"> <img width="21" height="21" src="https://img.icons8.com/ios/50/sun--v1.png" alt="sun--v1"/>Wednesday, October 12, 2026</p>
             </div>
             <br>
             <div class="second-part-second-box">
@@ -113,8 +114,7 @@
                 </div>
                 <div class="second-box-icons">
                     <button class="worn-today-button"> Worn Today<img width="20" height="20" src="https://img.icons8.com/fluency-systems-filled/48/checkmark.png" alt="checkmark"/></button>
-                    <button class="change-outfit-button"><img width="20" height="20" src="https://img.icons8.com/fluency-systems-regular/48/back-and-forth.png" alt="back-and-forth"/>Change Outfit</button>
-                    <button class="favourites-button"><i class="fa-regular fa-heart" style="color: white;"></i>Save to Favourites</button>
+                   
                 </div>
             </div>
         </div>
@@ -122,68 +122,8 @@
         <hr style="color:#5a3939; margin-top:10px ; margin-bottom: 20px;">
 
         <!--Second Boxes Inside big box-->
-        <div class="all-clothing-boxes">
-
-            <div class="clothing-boxes">
-                <div class="inside-box">
-                    <div>
-                        <img src="shirts.png" width="180" alt="White ribbed cropped knit top">
-                    </div>
-                    <div>
-                        <button class="heart-btn" type="button"><i class="fa-regular fa-heart"></i></button>
-                    </div>
-                </div>
-                <br> <br>
-                <p>Top</p>
-                <h4>White ribbed cropped knit top</h4>
-                <p>Cotton blend, Size S</p>
-            </div>
-
-            <div class="clothing-boxes">
-                <div class="inside-box">
-                    <div>
-                        <img src="Jeans.png" width="180" alt="High-waisted light wash jeans">
-                    </div>
-                    <div>
-                        <button class="heart-btn" type="button"><i class="fa-regular fa-heart"></i></button>
-                    </div>
-                </div>
-                <br> <br>
-                <p>Bottom</p>
-                <h4>High-waisted light wash jeans</h4>
-                <p>Denim, Size 26</p>
-            </div>
-
-            <div class="clothing-boxes">
-                <div class="inside-box">
-                    <div>
-                        <img src="Sneakers.png" width="180" alt="Classic white sneakers">
-                    </div>
-                    <div>
-                        <button class="heart-btn" type="button"><i class="fa-regular fa-heart"></i></button>
-                    </div>
-                </div>
-                <br> <br>
-                <p>Footwear</p>
-                <h4>Classic white sneakers</h4>
-                <p>Leather, EU38</p>
-            </div>
-
-            <div class="clothing-boxes">
-                <div class="inside-box">
-                    <div>
-                        <img src="totebag.png" width="180" alt="Canvas everyday tote bag">
-                    </div>
-                    <div>
-                        <button class="heart-btn" type="button"><i class="fa-regular fa-heart"></i></button>
-                    </div>
-                </div>
-                <br> <br>
-                <p>Accessory</p>
-                <h4>Canvas everyday tote bag</h4>
-                <p>Organic Cotton Canvas</p>
-            </div>
-
+        <div class="all-clothing-boxes" id="today-outfit-container">
+            <p>Loading today's outfit...</p>
         </div>
 
         <br>
@@ -195,81 +135,21 @@
 
             <div class="section-header">
                 <div class="header-text">
-                    <h2>Suggested for You</h2>
+                    <h2>Saved Outfits for You</h2>
                     <p>Rule-based combinations crafted for your weekly schedule</p>
                 </div>
-                <a href="#" class="view-all-link">View All Suggestions <i class="fa-solid fa-arrow-right"></i></a>
+               
             </div>
 
             <!-- Cards Container -->
-            <div class="cards-container">
-
-                <!-- Card 1 -->
-                <div class="suggestion-card">
-                    <div class="card-top">
-                        <span class="tag tag-pink">Study Mode</span>
-                        <button class="heart-btn" type="button"><i class="fa-regular fa-heart"></i></button>
-                    </div>
-                    <div class="card-info">
-                        <h3>Library Study Session</h3>
-                        <p>Soft pink cardigan, plaid mini skirt, loafers</p>
-                    </div>
-                    <div class="card-images">
-                        <div class="img-placeholder"> <img src="Pastel Pink Cable-Knit Cardigan.png" alt="Pastel pink cable-knit cardigan"></div>
-                        <div class="img-placeholder"><img src="pleated skirt.png" alt="Pleated mini skirt"></div>
-                        <div class="img-placeholder"><img src="loafers.png" alt="Loafers"></div>
-                    </div>
-                    <div class="card-actions">
-                        <button class="btn-primary">Wear This</button>
-                        <button class="btn-secondary">Save</button>
-                    </div>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="suggestion-card">
-                    <div class="card-top">
-                        <span class="tag tag-yellow">Casual / Chill</span>
-                        <button class="heart-btn" type="button"><i class="fa-regular fa-heart"></i></button>
-                    </div>
-                    <div class="card-info">
-                        <h3>Casual Coffee Run</h3>
-                        <p>Oversized graphic tee, biker shorts, chunky sneakers</p>
-                    </div>
-                    <div class="card-images">
-                        <div class="img-placeholder"><img src="oversized tee.png" alt="Oversized graphic tee"></div>
-                        <div class="img-placeholder"><img src="biker shorts.png" alt="Biker shorts"></div>
-                        <div class="img-placeholder"><img src="chunky sneakers.png" alt="Chunky sneakers"></div>
-                    </div>
-                    <div class="card-actions">
-                        <button class="btn-primary">Wear This</button>
-                        <button class="btn-secondary">Save</button>
-                    </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="suggestion-card">
-                    <div class="card-top">
-                        <span class="tag tag-grey">Smart Casual</span>
-                        <button class="heart-btn" type="button"><i class="fa-regular fa-heart"></i></button>
-                    </div>
-                    <div class="card-info">
-                        <h3>Presentation Day</h3>
-                        <p>Cream blazer, tailored trousers, block heels</p>
-                    </div>
-                    <div class="card-images">
-                        <div class="img-placeholder"><img src="blazer.png" alt="Cream blazer"></div>
-                        <div class="img-placeholder"><img src="trousers.png" alt="Tailored trousers"></div>
-                        <div class="img-placeholder"><img src="block heel.png" alt="Block heels"></div>
-                    </div>
-                    <div class="card-actions">
-                        <button class="btn-primary">Wear This</button>
-                        <button class="btn-secondary">Save</button>
-                    </div>
-                </div>
-
+           
+<div class="cards-container" id="saved-outfits-container">
+    <!-- JavaScript will load the saved outfits here -->
+</div>
             </div>
         </section>
     </section>
+    
 
     <footer class="bottom-bar">
         <p>Outfit Planner | © 2026 Outfit Planner. Designed for effortless daily styling.</p>
@@ -280,6 +160,68 @@
             <a href="#">Help & Feedback</a>
         </div>
     </footer>
+    <script type="module" src="./javascript/home.js"></script>
+
+
+
+
+        <!-- ADD CLOTHING POPUP -->
+    <div id="popup">
+        <div class="popup-box">
+            <h2>Add New Clothing</h2>
+            
+            <form id="myForm">
+                <div class="form-group">
+                    <label>Item Name</label>
+                    <input type="text" id="name" placeholder="e.g. Pastel Pink Hoodie" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="category">
+                        <option value="Top">Top</option>
+                        <option value="Bottom">Bottom</option>
+                        <option value="Shoes">Shoes</option>
+                        <option value="Dress">Dress</option>
+                        <option value="Accessory">Accessory</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Colour</label>
+                    <input type="text" id="colour" placeholder="e.g. Cream" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Occasion</label>
+                    <input type="text" id="occasion" placeholder="e.g. Casual" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Season</label>
+                    <select id="season">
+                        <option value="All Seasons">All Seasons</option>
+                        <option value="Spring">Spring</option>
+                        <option value="Summer">Summer</option>
+                        <option value="Autumn">Autumn</option>
+                        <option value="Winter">Winter</option>
+                    </select>
+                </div>
+
+                
+                             <!-- IMAGE FILE NAME INPUT -->
+                <div class="form-group">
+    <label>Select Item Picture</label>
+    <input type="file" id="image-file" accept="image/*" required style="padding: 10px; border: 1px solid #cac9c9; border-radius: 5px;">
+</div>
+                
+                <div class="popup-buttons">
+                    <button type="button" id="closeBtn">Cancel</button>
+                    <button type="submit" class="saveBtn">Save Item</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
 </body>
 </html>

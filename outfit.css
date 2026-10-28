@@ -590,3 +590,24 @@
             .bottom-footer { padding: 1rem; }
             .footer-links-list { flex-direction: column; gap: 10px; }
         }
+
+        /* Styling for the Show/Hide dropdowns */
+.category-dropdown {
+    background-color: #faf8f7;
+    border: 1px solid #cac9c9;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-family: inherit;
+    color: #3b2f2f;
+    font-size: 0.8rem;
+    cursor: pointer;
+    outline: none;
+}
+
+/*  for the images inside the dropdowns */
+.clothing-item-image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 6px;
+}

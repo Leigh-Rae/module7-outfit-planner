@@ -7,6 +7,8 @@
     
     <!-- CSS Link -->
     <link rel="stylesheet" href="MyWardrobe.css">
+    <!-- ADDED POPUP CSS LINK HERE -->
+    <link rel="stylesheet" href="addItemPopup.css">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,7 +42,7 @@
             <i class="fa-regular fa-bell"></i>
             <i class="fa-regular fa-heart"></i>
         </div>
-            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=60" alt="User Profile Picture" class="profile-picture">
+            <img src="" alt="User Profile Picture" class="profile-picture" id="nav-profile-pic">
         </div>
     </header>
 
@@ -50,7 +52,7 @@
         <div class="page-title-row">
             <div class="title-text">
                 <h1>My Wardrobe <span class="pink-badge">Active Closet</span></h1>
-                <p class="grey-subtitle">All your clothes in one organized closet (42 items total)</p>
+                <p class="grey-subtitle">All your clothes in one organized closet</p>
             </div>
             <button class="pink-button">+ Add Clothing</button>
         </div>
@@ -60,7 +62,7 @@
             
             <!-- Search and Sort Row -->
             <div class="search-and-sort-row">
-                <input type="text" class="search-input" placeholder="Search your clothes (e.g., striped shirt, jeans)...">
+                <input type="text" class="search-input" id="search-bar" placeholder="Search your clothes (e.g., striped shirt, jeans)...">
                 <div class="sort-dropdown">
                     <label>Sort by:</label>
                     <select>
@@ -72,179 +74,51 @@
 
             <!-- Category Buttons Row -->
             <div class="category-buttons-row">
-                <button class="category-button active-category">All (42)</button>
-                <button class="category-button">Tops (14)</button>
-                <button class="category-button">Bottoms (11)</button>
-                <button class="category-button">Dresses (5)</button>
-                <button class="category-button">Shoes (6)</button>
-                <button class="category-button">Accessories (6)</button>
+                <button class="category-button active-category" data-category="All">All</button>
+                <button class="category-button" data-category="Top">Tops</button>
+                <button class="category-button" data-category="Bottom">Bottoms</button>
+                <button class="category-button" data-category="Dress">Dresses</button>
+                <button class="category-button" data-category="Shoes">Shoes</button>
+                <button class="category-button" data-category="Accessory">Accessories</button>
             </div>
 
             <!-- Dropdown Filters Row -->
             <div class="dropdown-filters-row">
                 <div class="filter-dropdowns">
-                    <button class="filter-button">Filters</button>
-                    <button class="filter-button">Colour: All Colours</button>
-                    <button class="filter-button">Season: Spring/Summer</button>
-                    <button class="filter-button">Occasion: Casual / College</button>
+                    <select id="filter-colour" class="filter-button" style="appearance: none; outline: none; cursor: pointer;">
+                        <option value="All">Colour: All</option>
+                        <option value="Black">Black</option>
+                        <option value="White">White</option>
+                        <option value="Cream">Cream</option>
+                        <option value="Pink">Pink</option>
+                        <option value="Blue">Blue</option>
+                    </select>
+                    <select id="filter-season" class="filter-button" style="appearance: none; outline: none; cursor: pointer;">
+                        <option value="All">Season: All</option>
+                        <option value="Summer">Summer</option>
+                        <option value="Winter">Winter</option>
+                        <option value="Autumn">Autumn</option>
+                        <option value="Spring">Spring</option>
+                    </select>
+                    <select id="filter-occasion" class="filter-button" style="appearance: none; outline: none; cursor: pointer;">
+                        <option value="All">Occasion: All</option>
+                        <option value="Casual">Casual</option>
+                        <option value="Formal">Formal</option>
+                    </select>
                 </div>
-                <button class="clear-filters-button">Clear all filters</button>
+                <button class="clear-filters-button" id="clear-filters">Clear all filters</button>
             </div>
         </div>
 
         <!-- CLOTHING CARDS GRID -->
-        <div class="clothing-cards-grid">
-            
-            <!-- Card 1 -->
-            <div class="card-box">
-                <button class="heart-button" type="button"><i class="fa-regular fa-heart"></i></button>
-                <img src="pinkhoodie.png" alt="Oversized Pastel Pink Hoodie" class="card-image">
-                <div class="card-text-area">
-                    <span class="grey-tag">Top</span>
-                    <h3 class="item-name">Oversized Pastel Pink Hoodie</h3>
-                    <p class="item-details">Spring/Fall • Pastel Pink</p>
-                    <div class="card-bottom-row">
-                        <span class="wear-count">Worn 14 times</span>
-                        <div class="card-action-buttons">
-                            <button class="small-button">Edit</button>
-                            <button class="small-button">Delete</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 2 -->
-            <div class="card-box">
-                <button class="heart-button" type="button"><i class="fa-regular fa-heart"></i></button>
-                <img src="highrise-jeans.png" alt="Classic High-Rise Blue Jeans"  class="card-image">
-                <div class="card-text-area">
-                    <span class="grey-tag">Bottom</span>
-                    <h3 class="item-name">Classic High-Rise Blue Jeans</h3>
-                    <p class="item-details">All Seasons • Light Blue</p>
-                    <div class="card-bottom-row">
-                        <span class="wear-count">Worn 28 times</span>
-                        <div class="card-action-buttons">
-                            <button class="small-button">Edit</button>
-                            <button class="small-button">Delete</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 3 -->
-            <div class="card-box">
-                <button class="heart-button" type="button"><i class="fa-regular fa-heart"></i></button>
-                <img src="tennis-skirt.png" alt="Pleated Tennis Skirt" class="card-image">
-                <div class="card-text-area">
-                    <span class="grey-tag">Bottom</span>
-                    <h3 class="item-name">Pleated Tennis Skirt</h3>
-                    <p class="item-details">Summer • Crisp White</p>
-                    <div class="card-bottom-row">
-                        <span class="wear-count">Worn 8 times</span>
-                        <div class="card-action-buttons">
-                            <button class="small-button">Edit</button>
-                            <button class="small-button">Delete</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 4 -->
-            <div class="card-box">
-              <button class="heart-button" type="button"><i class="fa-regular fa-heart"></i></button>
-                <img src="canvas court shoes.png" alt="Chunky Canvas Sneakers" class="card-image">
-                <div class="card-text-area">
-                    <span class="grey-tag">Shoes</span>
-                    <h3 class="item-name">Chunky Canvas Sneakers</h3>
-                    <p class="item-details">All Seasons • Ecru/Beige</p>
-                    <div class="card-bottom-row">
-                        <span class="wear-count">Worn 32 times</span>
-                        <div class="card-action-buttons">
-                            <button class="small-button">Edit</button>
-                            <button class="small-button">Delete</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 5 -->
-            <div class="card-box">
-              <button class="heart-button" type="button"><i class="fa-regular fa-heart"></i></button>
-                <img src="creamcardigan.png" alt="Cream Ribbed Knit Cardigan" class="card-image">
-                <div class="card-text-area">
-                    <span class="grey-tag">Top</span>
-                    <h3 class="item-name">Cream Ribbed Knit Cardigan</h3>
-                    <p class="item-details">Autumn/Spring • Cream</p>
-                    <div class="card-bottom-row">
-                        <span class="wear-count">Worn 19 times</span>
-                        <div class="card-action-buttons">
-                            <button class="small-button">Edit</button>
-                            <button class="small-button">Delete</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 6 -->
-            <div class="card-box">
-              <button class="heart-button" type="button"><i class="fa-regular fa-heart"></i></button>
-                <img src="pink floral dress.png" alt="Floral Linen Sundress" class="card-image">
-                <div class="card-text-area">
-                    <span class="grey-tag">Dress</span>
-                    <h3 class="item-name">Floral Linen Sundress</h3>
-                    <p class="item-details">Summer • Floral Mix</p>
-                    <div class="card-bottom-row">
-                        <span class="wear-count">Worn 5 times</span>
-                        <div class="card-action-buttons">
-                            <button class="small-button">Edit</button>
-                            <button class="small-button">Delete</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 7 -->
-            <div class="card-box">
-               <button class="heart-button" type="button"><i class="fa-regular fa-heart"></i></button>
-                <img src="vintagebelt.png" alt="Vintage Leather Belt" class="card-image">
-                <div class="card-text-area">
-                    <span class="grey-tag">Accessories</span>
-                    <h3 class="item-name">Vintage Leather Belt</h3>
-                    <p class="item-details">All Season • Cognac Brown</p>
-                    <div class="card-bottom-row">
-                        <span class="wear-count">Worn 21 times</span>
-                        <div class="card-action-buttons">
-                            <button class="small-button">Edit</button>
-                            <button class="small-button">Delete</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 8 -->
-            <div class="card-box">
-                <button class="heart-button" type="button"><i class="fa-regular fa-heart"></i></button>
-                <img src="Sneakers.png" alt="Retro White Court Shoes" class="card-image">
-                <div class="card-text-area">
-                    <span class="grey-tag">Shoes</span>
-                    <h3 class="item-name">Retro White Court Shoes</h3>
-                    <p class="item-details">Spring/Summer • White & Pink</p>
-                    <div class="card-bottom-row">
-                        <span class="wear-count">Worn 16 times</span>
-                        <div class="card-action-buttons">
-                            <button class="small-button">Edit</button>
-                            <button class="small-button">Delete</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+        <div class="clothing-cards-grid" id="wardrobe-grid">
+            <!-- Javascript will put the cards here -->
         </div>
 
-        <!-- LOAD MORE SECTION -->
-        <div class="load-more-area">
-            <p class="item-count-text">Showing 8 of 42 items</p>
-            <button class="load-more-button">Load More</button>
+        <!-- LOAD MORE SECTION (Centered) -->
+        <div class="load-more-area" style="text-align: center;">
+            <p class="item-count-text" id="item-count-text">Showing 0 items</p>
+            <button class="load-more-button" id="load-more-btn">Load More</button>
         </div>
 
     </main>
@@ -261,5 +135,62 @@
         </div>
     </footer>
 
+    <!-- ADD CLOTHING POPUP -->
+    <div id="popup">
+        <div class="popup-box">
+            <h2>Add New Clothing</h2>
+            
+            <form id="myForm">
+                <div class="form-group">
+                    <label>Item Name</label>
+                    <input type="text" id="name" placeholder="e.g. Pastel Pink Hoodie" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="category">
+                        <option value="Top">Top</option>
+                        <option value="Bottom">Bottom</option>
+                        <option value="Shoes">Shoes</option>
+                        <option value="Dress">Dress</option>
+                        <option value="Accessory">Accessory</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Colour</label>
+                    <input type="text" id="colour" placeholder="e.g. Cream" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Occasion</label>
+                    <input type="text" id="occasion" placeholder="e.g. Casual" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Season</label>
+                    <select id="season">
+                        <option value="All Seasons">All Seasons</option>
+                        <option value="Spring">Spring</option>
+                        <option value="Summer">Summer</option>
+                        <option value="Autumn">Autumn</option>
+                        <option value="Winter">Winter</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Select Item Picture</label>
+                    <input type="file" id="image-file" accept="image/*" required style="padding: 10px; border: 1px solid #cac9c9; border-radius: 5px;">
+                </div>
+                
+                <div class="popup-buttons">
+                    <button type="button" id="closeBtn">Cancel</button>
+                    <button type="submit" class="saveBtn">Save Item</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="module" src="./javascript/wardrobe.js"></script>
 </body>
 </html>

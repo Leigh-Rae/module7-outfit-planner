@@ -5,23 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create an Outfit</title>
 
-     <!-- CSS Link -->
     <link rel="stylesheet" href="outfit.css">
+    <link rel="stylesheet" href="addItemPopup.css">
 
-    
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/0fc67ac136.js" crossorigin="anonymous"></script>
-
-    
 </head>
 <body>
 
-    <!-- TOP HEADER SECTION -->
     <header class="top-header">
         <div class="website-logo-area">
             <img src="OP Logo.png" alt="Outfit Planner Logo"/> Outfit Planner
@@ -42,174 +35,108 @@
                 <span> <i class="fa-regular fa-bell"></i> </span>
                 <span> <i class="fa-regular fa-heart"></i> </span>
             </div>
-            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=60" alt="User Profile Picture" class="user-profile-picture">
+            <img src="" alt="User Profile Picture" class="user-profile-picture" id="nav-profile-pic">
         </div>
     </header>
 
-    <!-- MAIN CONTENT -->
     <main class="main-content-wrapper">
         
-        <!-- PAGE TITLE SECTION -->
         <div class="page-title-row">
             <div class="page-title-text">
-                <h1> <img width="30" height="30" src="https://img.icons8.com/color/48/sparkling.png" alt="sparkling"/>Create an Outfit <span class="pink-status-badge">3 items selected</span></h1>
+                <h1> <img width="30" height="30" src="https://img.icons8.com/color/48/sparkling.png" alt="sparkling"/>Create an Outfit <span class="pink-status-badge" id="item-count-badge">0 items selected</span></h1>
                 <p class="grey-page-subtitle">Pick items from your closet to assemble a complete look</p>
             </div>
         </div>
 
-        <!-- TWO COLUMN LAYOUT -->
         <div class="two-column-layout">
             
-            <!-- LEFT COLUMN: SELECTION PANEL -->
+            <!-- LEFT COLUMN -->
             <div class="selection-panel">
                 <div class="selection-panel-header">
                     <h2>Select Your Items</h2>
                 </div>
 
-                <!-- Category 1: Tops -->
+                <!-- 1. Tops -->
                 <div class="item-category-section">
                     <div class="category-section-header">
                         <h3><span class="step-number-circle">1</span> Choose a Top</h3>
-                        <span class="required-or-optional-label">Required</span>
+                        <select class="category-dropdown" id="top-dropdown" onchange="toggleSection('top')">
+                            <option value="closed">Show Options</option>
+                            <option value="open">Hide Options</option>
+                        </select>
                     </div>
-                    <div class="clothing-items-grid">
-                        <div class="clothing-item-card selected-item-card">
-                            <div class="clothing-item-image-placeholder"><img src="white tee.png" alt="white tee" class="card-image"></div>
-                            <div class="clothing-item-name">White Baby Tee</div>
-                            <div class="clothing-item-details">R24 · Cotton</div>
-                        </div>
-                        <div class="clothing-item-card">
-                            <div class="clothing-item-image-placeholder"><img src="pinkhoodie.png" alt="hoodie" class="card-image"></div>
-                            <div class="clothing-item-name">Pink Oversized Hoodie</div>
-                            <div class="clothing-item-details">R48 · Fleece</div>
-                        </div>
-                        <div class="clothing-item-card">
-                            <div class="clothing-item-image-placeholder"><img src="floral blouse.png" alt="Floral blouse " class="card-image"></div>
-                            <div class="clothing-item-name">Floral Blouse</div>
-                            <div class="clothing-item-details">R35 · Chiffon</div>
-                        </div>
-                    </div>
+                    <div class="clothing-items-grid" id="tops-grid" style="display: grid;"></div>
                 </div>
 
-                <!-- Category 2: Bottoms -->
+                <!-- 2. Bottoms -->
                 <div class="item-category-section">
                     <div class="category-section-header">
                         <h3><span class="step-number-circle">2</span> Choose a Bottom</h3>
-                        <span class="required-or-optional-label">Required</span>
+                        <select class="category-dropdown" id="bottom-dropdown" onchange="toggleSection('bottom')">
+                            <option value="closed">Show Options</option>
+                            <option value="open">Hide Options</option>
+                        </select>
                     </div>
-                    <div class="clothing-items-grid">
-                        <div class="clothing-item-card selected-item-card">
-                            <div class="clothing-item-image-placeholder"><img src="highrise-jeans.png" alt="jeans" class="card-image"></div>
-                            <div class="clothing-item-name">Light Wash Jeans</div>
-                            <div class="clothing-item-details">R52 · Denim</div>
-                        </div>
-                        <div class="clothing-item-card">
-                            <div class="clothing-item-image-placeholder"><img src="cargopants.png" alt="cargo pants" class="card-image"></div>
-                            <div class="clothing-item-name">Khaki Cargo Pants</div>
-                            <div class="clothing-item-details">R45 · Twill</div>
-                        </div>
-                        <div class="clothing-item-card">
-                            <div class="clothing-item-image-placeholder"><img src="tennis-skirt.png" alt="tennis skirt" class="card-image"></div>
-                            <div class="clothing-item-name">Tennis Skirt</div>
-                            <div class="clothing-item-details">R28 · Pleated</div>
-                        </div>
-                    </div>
+                    <div class="clothing-items-grid" id="bottoms-grid" style="display: grid;"></div>
                 </div>
 
-                <!-- Category 3: Shoes -->
+                <!-- 3. Shoes -->
                 <div class="item-category-section">
                     <div class="category-section-header">
                         <h3><span class="step-number-circle">3</span> Choose Shoes</h3>
-                        <span class="required-or-optional-label">Required</span>
+                        <select class="category-dropdown" id="shoes-dropdown" onchange="toggleSection('shoes')">
+                            <option value="closed">Show Options</option>
+                            <option value="open">Hide Options</option>
+                        </select>
                     </div>
-                    <div class="clothing-items-grid">
-                        <div class="clothing-item-card selected-item-card">
-                            <div class="clothing-item-image-placeholder"><img src="Sneakers.png" alt="sneakers" class="card-image"></div>
-                            <div class="clothing-item-name">White Sneakers</div>
-                            <div class="clothing-item-details">R85 · Canvas</div>
-                        </div>
-                        <div class="clothing-item-card">
-                            <div class="clothing-item-image-placeholder"><img src="chelsea boots.png" alt="boots" class="card-image"></div>
-                            <div class="clothing-item-name">Chelsea Boots</div>
-                            <div class="clothing-item-details">R120 · Leather</div>
-                        </div>
-                        <div class="clothing-item-card">
-                            <div class="clothing-item-image-placeholder"><img src="loafers.png" alt="loafers" class="card-image"></div>
-                            <div class="clothing-item-name">Loafers</div>
-                            <div class="clothing-item-details">R95 · Faux Leather</div>
-                        </div>
-                    </div>
+                    <div class="clothing-items-grid" id="shoes-grid" style="display: grid;"></div>
                 </div>
 
-                <!-- Category 4: Accessories -->
+                <!-- 4. Dresses (NEW!) -->
                 <div class="item-category-section">
                     <div class="category-section-header">
-                        <h3><span class="step-number-circle">4</span> Optional Accessories</h3>
-                        <span class="required-or-optional-label">Optional</span>
+                        <h3><span class="step-number-circle">4</span> Choose a Dress</h3>
+                        <select class="category-dropdown" id="dress-dropdown" onchange="toggleSection('dress')">
+                            <option value="closed">Show Options</option>
+                            <option value="open">Hide Options</option>
+                        </select>
                     </div>
-                    <div class="clothing-items-grid">
-                        <div class="clothing-item-card">
-                            <div class="clothing-item-image-placeholder"><img src="totebag.png" alt="bag" class="card-image"></div>
-                            <div class="clothing-item-name">Canvas Tote Bag</div>
-                            <div class="clothing-item-details">R28 · Eco-friendly</div>
-                        </div>
-                        <div class="clothing-item-card">
-                            <div class="clothing-item-image-placeholder"><img src="cap.png" alt="cap" class="card-image"></div>
-                            <div class="clothing-item-name">Corduroy Cap</div>
-                            <div class="clothing-item-details">R22 · Cotton</div>
-                        </div>
-                        <div class="clothing-item-card">
-                            <div class="clothing-item-image-placeholder"><img src="vintagebelt.png" alt="belt" class="card-image"></div>
-                            <div class="clothing-item-name">Leather Belt</div>
-                            <div class="clothing-item-details">R35 · Genuine Leather</div>
-                        </div>
-                    </div>
+                    <div class="clothing-items-grid" id="dresses-grid" style="display: grid;"></div>
                 </div>
+
+                <!-- 5. Accessories -->
+                <div class="item-category-section">
+                    <div class="category-section-header">
+                        <h3><span class="step-number-circle">5</span> Optional Accessories</h3>
+                        <select class="category-dropdown" id="accessory-dropdown" onchange="toggleSection('accessory')">
+                            <option value="closed">Show Options</option>
+                            <option value="open">Hide Options</option>
+                        </select>
+                    </div>
+                    <div class="clothing-items-grid" id="accessories-grid" style="display: grid;"></div>
+                </div>
+
             </div>
 
-            <!-- RIGHT COLUMN: PREVIEW PANEL -->
+            <!-- RIGHT COLUMN -->
             <div class="outfit-preview-panel">
                 <div class="preview-panel-header">
                     <h2>Outfit Preview</h2>
-                    <span class="header-icon-group"> <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=60" alt="User Profile Picture" class="user-profile-picture"></span>
                 </div>
 
-                <div class="preview-items-grid">
-                    <div class="preview-item-box">
-                        <div class="preview-item-thumbnail"><img src="white tee.png" alt="white tee" class="card-image2"></div>
-                        <div class="preview-item-info">
-                            <div class="preview-item-name">White Baby Tee</div>
-                            <div class="preview-item-price">R24</div>
-                        </div>
-                    </div>
-                    <div class="preview-item-box">
-                        <div class="preview-item-thumbnail"><img src="highrise-jeans.png" alt="jeans" class="card-image2"></div>
-                        <div class="preview-item-info">
-                            <div class="preview-item-name">Light Wash Jeans</div>
-                            <div class="preview-item-price">R52</div>
-                        </div>
-                    </div>
-                    <div class="preview-item-box">
-                        <div class="preview-item-thumbnail"><img src="Sneakers.png" alt="sneakers" class="card-image2"></div>
-                        <div class="preview-item-info">
-                            <div class="preview-item-name">White Sneakers</div>
-                            <div class="preview-item-price">R85</div>
-                        </div>
-                    </div>
-                    <div class="add-accessory-dashed-box">
-                        + Add Accessory
-                    </div>
+                <div class="preview-items-grid" id="preview-box">
+                    <!-- Javascript will put the selected items here -->
                 </div>
 
                 <div class="outfit-form-group">
                     <label>Outfit Name</label>
-                    <input type="text" class="outfit-form-input" value="Monday Morning Campus Look">
+                    <input type="text" class="outfit-form-input" id="outfit-name" value="My New Outfit">
                 </div>
 
                 <div class="outfit-form-row">
                     <div class="outfit-form-group">
                         <label>Occasion</label>
-                        <select class="outfit-form-input">
+                        <select class="outfit-form-input" id="outfit-occasion">
                             <option>Campus</option>
                             <option>Casual</option>
                             <option>Formal</option>
@@ -217,7 +144,7 @@
                     </div>
                     <div class="outfit-form-group">
                         <label>Season</label>
-                        <select class="outfit-form-input">
+                        <select class="outfit-form-input" id="outfit-season">
                             <option>Spring</option>
                             <option>Summer</option>
                             <option>Autumn</option>
@@ -226,20 +153,20 @@
                     </div>
                 </div>
 
+                <!-- NEW DATE PICKER -->
                 <div class="outfit-form-group">
-                    <label>Notes (Optional)</label>
-                    <input type="text" class="outfit-form-input" value="Warm and comfy for 3-hour lecture">
+                    <label>Plan for Date (Optional)</label>
+                    <input type="date" class="outfit-form-input" id="outfit-date">
                 </div>
 
                 <div class="outfit-action-buttons">
-                    <button class="outfit-action-button save-outfit-button"><i class="fa-regular fa-bookmark" style="color: rgb(253, 253, 253);"></i> Save Outfit</button>
-                    <button class="outfit-action-button clear-selection-button">Clear Selection</button>
+                    <button class="outfit-action-button save-outfit-button" id="save-outfit-btn"><i class="fa-regular fa-bookmark" style="color: rgb(253, 253, 253);"></i> Save Outfit</button>
+                    <button class="outfit-action-button clear-selection-button" id="clear-btn">Clear Selection</button>
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- FOOTER SECTION -->
     <footer class="bottom-footer">
         <div class="footer-logo-text">Outfit Planner</div>
         <p class="footer-copyright-text">© 2026 Outfit Planner. Designed for effortless daily styling.</p>
@@ -251,5 +178,55 @@
         </div>
     </footer>
 
+    <!-- ADD ITEM POPUP -->
+    <div id="popup">
+        <div class="popup-box">
+            <h2>Add New Clothing</h2>
+            <form id="myForm">
+                <div class="form-group">
+                    <label>Item Name</label>
+                    <input type="text" id="name" placeholder="e.g. Pastel Pink Hoodie" required>
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="category">
+                        <option value="Top">Top</option>
+                        <option value="Bottom">Bottom</option>
+                        <option value="Shoes">Shoes</option>
+                        <option value="Dress">Dress</option>
+                        <option value="Accessory">Accessory</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Colour</label>
+                    <input type="text" id="colour" placeholder="e.g. Cream" required>
+                </div>
+                <div class="form-group">
+                    <label>Occasion</label>
+                    <input type="text" id="occasion" placeholder="e.g. Casual" required>
+                </div>
+                <div class="form-group">
+                    <label>Season</label>
+                    <select id="season">
+                        <option value="All Seasons">All Seasons</option>
+                        <option value="Spring">Spring</option>
+                        <option value="Summer">Summer</option>
+                        <option value="Autumn">Autumn</option>
+                        <option value="Winter">Winter</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Select Item Picture</label>
+                    <input type="file" id="image-file" accept="image/*" required style="padding: 10px; border: 1px solid #cac9c9; border-radius: 5px;">
+                </div>
+                <div class="popup-buttons">
+                    <button type="button" id="closeBtn">Cancel</button>
+                    <button type="submit" class="saveBtn">Save Item</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="./javascript/outfit.js" type="module"></script>
 </body>
 </html>

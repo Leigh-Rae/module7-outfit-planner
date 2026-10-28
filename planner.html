@@ -5,22 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Outfit Planner - My Outfit Planner</title>
     
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- CSS Link -->
     <link rel="stylesheet" href="planner.css">
+    <link rel="stylesheet" href="addItemPopup.css">
 
-    <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/0fc67ac136.js" crossorigin="anonymous"></script>
-
-
 </head>
 <body>
 
-    <!-- TOP HEADER SECTION -->
     <header class="top-header">
         <div class="website-logo-area">
             <img src="OP Logo.png" alt="Outfit Planner Logo"/> Outfit Planner
@@ -41,34 +36,31 @@
                <span> <i class="fa-regular fa-bell"></i> </span>
                 <span> <i class="fa-regular fa-heart"></i> </span>
             </div>
-            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=60" alt="User Profile Picture" class="user-profile-picture">
+            <img src="" alt="User Profile Picture" class="user-profile-picture" id="nav-profile-pic">
         </div>
     </header>
 
-    <!-- MAIN CONTENT -->
     <main class="main-content-wrapper">
         
-        <!-- PAGE TITLE SECTION -->
         <div class="page-title-row">
             <div class="page-title-text">
-                <h1>My Outfit Planner <span class="pink-status-badge">&lt;</span></h1>
+                <h1>My Outfit Planner</h1>
                 <p class="grey-page-subtitle">Plan what you'll wear ahead of time so your mornings are stress-free.</p>
             </div>
-            <button class="pink-rounded-button"><i class="fa-regular fa-calendar-days"></i> Plan for Today</button>
+            <button class="pink-rounded-button" onclick="window.location.href='outfit.html'"><i class="fa-regular fa-calendar-days"></i> Plan for Today</button>
         </div>
 
-        <!-- TWO COLUMN LAYOUT -->
         <div class="two-column-layout">
             
             <!-- LEFT COLUMN: CALENDAR PANEL -->
             <div class="calendar-panel">
                 <div class="calendar-header">
-                    <h2><i class="fa-regular fa-calendar-days"></i> October 2026</h2>
-                    <div class="calendar-navigation-buttons">
-                        <button class="calendar-nav-button">← Previous</button>
-                        <button class="calendar-nav-button active-nav-button">Today</button>
-                        <button class="calendar-nav-button">Next →</button>
-                    </div>
+                    <h2 id="month-year-display"><i class="fa-regular fa-calendar-days"></i> Loading...</h2>
+                  <div class="calendar-navigation-buttons">
+    <button class="calendar-nav-button" id="prev-btn">← Previous</button>
+    <button class="calendar-nav-button active-nav-button" id="today-btn">Today</button>
+    <button class="calendar-nav-button" id="next-btn">Next →</button>
+</div>
                 </div>
 
                 <!-- Calendar Grid -->
@@ -81,111 +73,19 @@
                     <div class="day-of-week-header">Fri</div>
                     <div class="day-of-week-header">Sat</div>
                     <div class="day-of-week-header">Sun</div>
-
-                    <!-- Week 1 -->
-                    <div class="calendar-day-cell">
-                        <div class="day-number-header"><span class="day-number">21</span></div>
-                        <div class="calendar-event-box">
-                            <span class="event-icon-text">📚 Camp...</span>
-                            <span class="event-item-count">3 items</span>
-                        </div>
-                    </div>
-                    <div class="calendar-day-cell">
-                        <div class="day-number-header"><span class="day-number">22</span></div>
-                        <div class="calendar-event-box">
-                            <span class="event-icon-text">📝 Study...</span>
-                            <span class="event-item-count">2 items</span>
-                        </div>
-                    </div>
-                    <div class="calendar-day-cell">
-                        <div class="day-number-header"><span class="day-number">23</span></div>
-                        <div class="calendar-event-box">
-                            <span class="event-icon-text">+ Assign...</span>
-                            <span class="event-item-count">3 items</span>
-                        </div>
-                    </div>
-                    <div class="calendar-day-cell highlighted-today-cell">
-                        <div class="day-number-header">
-                            <span class="day-number">24</span>
-                            <span class="today-label">Today</span>
-                        </div>
-                        <div class="calendar-event-box event-highlighted">
-                            <span class="event-icon-text">👗 Prese...</span>
-                            <span class="event-item-count">3 items</span>
-                        </div>
-                    </div>
-                    <div class="calendar-day-cell">
-                        <div class="day-number-header"><span class="day-number">25</span></div>
-                        <div class="calendar-event-box">
-                            <span class="event-icon-text">🏋️ Gym &...</span>
-                            <span class="event-item-count">2 items</span>
-                        </div>
-                    </div>
-                    <div class="calendar-day-cell">
-                        <div class="day-number-header"><span class="day-number">26</span></div>
-                        <div class="calendar-event-box">
-                            <span class="event-icon-text">+ Assign...</span>
-                            <span class="event-item-count">2 items</span>
-                        </div>
-                    </div>
-                    <div class="calendar-day-cell">
-                        <div class="day-number-header"><span class="day-number">27</span></div>
-                        <div class="calendar-event-box">
-                            <span class="event-icon-text">👗 Sunda...</span>
-                            <span class="event-item-count">4 items</span>
-                        </div>
-                    </div>
-
-                    <!-- Week 2 -->
-                    <div class="calendar-day-cell">
-                        <div class="day-number-header"><span class="day-number">28</span></div>
-                        <div class="calendar-event-box">
-                            <span class="event-icon-text">+ Assign...</span>
-                            <span class="event-item-count">3 items</span>
-                        </div>
-                    </div>
-                    <div class="calendar-day-cell">
-                        <div class="day-number-header"><span class="day-number">29</span></div>
-                        <div class="calendar-event-box">
-                            <span class="event-icon-text">📚 Library...</span>
-                            <span class="event-item-count">2 items</span>
-                        </div>
-                    </div>
-                    <div class="calendar-day-cell">
-                        <div class="day-number-header"><span class="day-number">30</span></div>
-                        <div class="calendar-event-box">
-                            <span class="event-icon-text">+ Assign...</span>
-                            <span class="event-item-count">3 items</span>
-                        </div>
-                    </div>
-                    <div class="calendar-day-cell">
-                        <div class="day-number-header"><span class="day-number">31</span></div>
-                        <div class="calendar-event-box">
-                            <span class="event-icon-text">🎉 Costu...</span>
-                            <span class="event-item-count">5 items</span>
-                        </div>
-                    </div>
-                    <div class="calendar-day-cell empty-day-cell">
-                        <div class="day-number-header"><span class="day-number" style="color: #cac9c9;">Nov 1</span></div>
-                    </div>
-                    <div class="calendar-day-cell empty-day-cell">
-                        <div class="day-number-header"><span class="day-number" style="color: #cac9c9;">2</span></div>
-                    </div>
-                    <div class="calendar-day-cell empty-day-cell">
-                        <div class="day-number-header"><span class="day-number" style="color: #cac9c9;">3</span></div>
-                    </div>
+                    
+                    <!-- Days will be generated by JavaScript here -->
+                    <div id="calendar-days-container" style="display: contents;"></div>
                 </div>
 
-                <!-- Calendar Footer Stats -->
                 <div class="calendar-footer-stats">
                     <div class="stats-text-group">
                         <span>😊</span>
                         <div>
-                            <strong>5 out of 7 days coordinated!</strong>
-                            <span>You've saved approximately 45 minutes of morning deliberation this week.</span>
+                            <strong id="coordinated-days">0 out of 7 days coordinated!</strong>
+                            <span>You've saved time by planning ahead this week.</span>
                         </div>
                     </div>
-                    <span class="weather-link-text">Weekly Weather Forecast</span>
                 </div>
             </div>
 
@@ -193,50 +93,16 @@
             <div class="sidebar-panels">
                 
                 <!-- Selected Day Preview Panel -->
-                <div class="sidebar-panel">
+                <div class="sidebar-panel" id="selected-day-panel">
                     <div class="sidebar-panel-header">
                         <div>
                             <h3>Selected Day</h3>
-                            <span class="selected-date-text">Thursday, Oct 24</span>
-                        </div>
-                        <span class="weather-link-text">🌤️ 18°C</span>
-                    </div>
-
-                    <div class="preview-outfit-title-row">
-                        <h4>Campus Presentation Look</h4>
-                        <span>♡</span>
-                    </div>
-                    <p class="preview-outfit-meta">College / Semi-Formal · Classroom 202</p>
-
-                    <div class="preview-thumbnails-row">
-                        <div class="preview-thumbnail-box">
-                            <div class="preview-thumbnail-image"><img src="blazer.png" width="80%" height="60px" ></div>
-                            <span class="preview-thumbnail-label">Outfit Blazer</span>
-                            <span class="preview-thumbnail-sublabel">Zara Basic</span>
-                        </div>
-                        <div class="preview-thumbnail-box">
-                            <div class="preview-thumbnail-image"><img src="black trousers.png" width="80%" height="60px"></div>
-                            <span class="preview-thumbnail-label">Black Trousers</span>
-                            <span class="preview-thumbnail-sublabel">Uniqlo Smart</span>
-                        </div>
-                        <div class="preview-thumbnail-box">
-                            <div class="preview-thumbnail-image"><img src="loafers.png" width="80%" height="60px"></div>
-                            <span class="preview-thumbnail-label">Classic Loafers</span>
-                            <span class="preview-thumbnail-sublabel">Vintage Find</span>
+                            <span class="selected-date-text" id="selected-date-text">Loading...</span>
                         </div>
                     </div>
 
-                    <div class="outfit-note-box">
-                        <span>💡</span>
-                        <span>Pair with neutral minimal hoop and your canvas tote bag for a polished yet casual campus vibe.</span>
-                    </div>
-
-                    <div class="outfit-action-buttons-row">
-                        <button class="change-outfit-button"><img width="20" height="20" src="https://img.icons8.com/ios-glyphs/30/available-updates.png" alt="available-updates"/> Change Outfit</button>
-                    </div>
-                    <div class="secondary-actions-row">
-                        <button class="secondary-action-button"><i class="fa-regular fa-trash-can" style="color: rgb(109, 113, 121);"></i> Remove</button>
-                        <button class="secondary-action-button save-plan-button"><i class="fa-regular fa-bookmark" style="color: rgb(253, 253, 253);"></i> Save Plan</button>
+                    <div id="selected-day-content">
+                        <p class="grey-page-subtitle">Select a day on the calendar to see the planned outfit.</p>
                     </div>
                 </div>
 
@@ -244,54 +110,22 @@
                 <div class="sidebar-panel">
                     <div class="quick-assign-header">
                         <h3>Quick Assign</h3>
-                        <a href="#" class="view-saved-link">Saved Outfits</a>
+                        <a href="outfit.html" class="view-saved-link">Saved Outfits</a>
                     </div>
-                    <p class="grey-page-subtitle" style="margin-bottom: 16px; font-size: 0.75rem;">Click any look below to quickly slot it into an open calendar date.</p>
+                    <p class="grey-page-subtitle" style="margin-bottom: 16px; font-size: 0.75rem;">Click + to assign to the selected day.</p>
 
-                    <div class="quick-assign-list">
-                        <div class="quick-assign-item">
-                            <div class="quick-assign-info">
-                                <div class="quick-assign-thumbnail"><img src="chunky knit and denim.png" width="60%" height="30px"></div>
-                                <div class="quick-assign-text">
-                                    <div class="item-name">Chunky Knit & Denim</div>
-                                    <div class="item-meta">Casual · 3 items</div>
-                                </div>
-                            </div>
-                            <button class="add-quick-assign-button">+</button>
-                        </div>
-                        <div class="quick-assign-item">
-                            <div class="quick-assign-info">
-                                <div class="quick-assign-thumbnail"><img src="matcha run.png" width="60%" height="30px"></div>
-                                <div class="quick-assign-text">
-                                    <div class="item-name">Pilates & Matcha Run</div>
-                                    <div class="item-meta">Athleisure · 4 items</div>
-                                </div>
-                            </div>
-                            <button class="add-quick-assign-button">+</button>
-                        </div>
-                        <div class="quick-assign-item">
-                            <div class="quick-assign-info">
-                                <div class="quick-assign-thumbnail"><img src="farmers market run.png" width="60%" height="30px"></div>
-                                <div class="quick-assign-text">
-                                    <div class="item-name">Weekend Farmer's Market</div>
-                                    <div class="item-meta">Weekend · 3 items</div>
-                                </div>
-                            </div>
-                            <button class="add-quick-assign-button">+</button>
-                        </div>
+                    <div class="quick-assign-list" id="quick-assign-list">
+                        <!-- JS will load saved outfits here -->
                     </div>
-
-                    <button class="auto-suggest-button"><img width="20" height="20" src="https://img.icons8.com/color/48/sparkling.png" alt="sparkling"/> Auto-Suggest Week Outfits</button>
                 </div>
 
             </div>
         </div>
     </main>
 
-    <!-- FOOTER SECTION -->
     <footer class="bottom-footer">
         <div class="footer-logo-text">Outfit Planner</div>
-        <p class="footer-copyright-text">© 2024 Outfit Planner. Designed for effortless daily styling.</p>
+        <p class="footer-copyright-text">© 2026 Outfit Planner. Designed for effortless daily styling.</p>
         <div class="footer-links-list">
             <a href="#">Privacy Policy</a>
             <a href="#">Terms of Service</a>
@@ -300,5 +134,55 @@
         </div>
     </footer>
 
+    <!-- ADD ITEM POPUP (Copied from Home) -->
+    <div id="popup">
+        <div class="popup-box">
+            <h2>Add New Clothing</h2>
+            <form id="myForm">
+                <div class="form-group">
+                    <label>Item Name</label>
+                    <input type="text" id="name" placeholder="e.g. Pastel Pink Hoodie" required>
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="category">
+                        <option value="Top">Top</option>
+                        <option value="Bottom">Bottom</option>
+                        <option value="Shoes">Shoes</option>
+                        <option value="Dress">Dress</option>
+                        <option value="Accessory">Accessory</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Colour</label>
+                    <input type="text" id="colour" placeholder="e.g. Cream" required>
+                </div>
+                <div class="form-group">
+                    <label>Occasion</label>
+                    <input type="text" id="occasion" placeholder="e.g. Casual" required>
+                </div>
+                <div class="form-group">
+                    <label>Season</label>
+                    <select id="season">
+                        <option value="All Seasons">All Seasons</option>
+                        <option value="Spring">Spring</option>
+                        <option value="Summer">Summer</option>
+                        <option value="Autumn">Autumn</option>
+                        <option value="Winter">Winter</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Select Item Picture</label>
+                    <input type="file" id="image-file" accept="image/*" required style="padding: 10px; border: 1px solid #cac9c9; border-radius: 5px;">
+                </div>
+                <div class="popup-buttons">
+                    <button type="button" id="closeBtn">Cancel</button>
+                    <button type="submit" class="saveBtn">Save Item</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="module" src="./javascript/planner.js"></script>
 </body>
 </html>

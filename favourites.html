@@ -5,21 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Outfit Planner - My Favourites</title>
     
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- CSS Link -->
     <link rel="stylesheet" href="Favourites.css">
+    <link rel="stylesheet" href="addItemPopup.css">
 
-     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/0fc67ac136.js" crossorigin="anonymous"></script>
-
 </head>
 <body>
 
-    <!-- TOP HEADER SECTION -->
     <header class="top-header">
         <div class="website-logo-area">
             <img src="OP Logo.png" alt="Outfit Planner Logo"/> Outfit Planner
@@ -28,263 +24,63 @@
         <nav class="main-navigation-links">
             <a href="home.html">Home</a>
             <a href="MyWardrobe.html">Wardrobe</a>
-            <a href="outfits.html">Outfits</a>
+            <a href="outfit.html">Outfits</a>
             <a href="planner.html">Planner</a>
             <a href="favourites.html" class="active-page-link">Favourites</a>
             <a href="profile.html">Profile</a>
         </nav>
 
         <div class="header-right-side-buttons">
-            <button class="pink-rounded-button">+ Add Item</button>
+            <button class="pink-rounded-button" id="add-btn-header">+ Add Item</button>
             <div class="header-icon-group">
                 <span> <i class="fa-regular fa-bell"></i> </span>
                 <span> <i class="fa-regular fa-heart"></i> </span>
             </div>
-            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=60" alt="User Profile Picture" class="user-profile-picture">
+            <img src="" alt="User Profile Picture" class="user-profile-picture" id="nav-profile-pic">
         </div>
     </header>
 
-    <!-- MAIN CONTENT -->
     <main class="main-content-wrapper">
         
-        <!-- PAGE TITLE SECTION -->
         <div class="page-title-row">
             <div class="page-title-text">
                 <h1>My Favourites <span class="heart-icon-pink"><i class="fa-solid fa-heart" style="color: rgb(241, 184, 222);"></i></span></h1>
                 <p class="grey-page-subtitle">Quick access to your most loved outfits and go-to saved clothing combinations.</p>
             </div>
-            <button class="pink-rounded-button"><img width="25" height="25" src="https://img.icons8.com/color/48/sparkling.png" alt="sparkling"/> Create Outfit from Favourites</button>
+            <button class="pink-rounded-button" onclick="window.location.href='outfit.html'"><img width="25" height="25" src="https://img.icons8.com/color/48/sparkling.png" alt="sparkling"/> Create Outfit from Favourites</button>
         </div>
 
         <!-- FILTER BUTTONS ROW -->
         <div class="filter-buttons-row">
-            <button class="filter-button active-filter-button"><i class="fa-solid fa-heart"></i> All Favourites (14)</button>
-            <button class="filter-button">Favourite Outfits (3)</button>
-            <button class="filter-button">Favourite Clothes (11)</button>
+            <button class="filter-button active-filter-button" id="filter-all">All Favourites</button>
+            <button class="filter-button" id="filter-outfits">Favourite Outfits</button>
+            <button class="filter-button" id="filter-clothes">Favourite Clothes</button>
         </div>
 
         <!-- SECTION 1: FAVOURITE OUTFITS -->
-        <div class="section-header">
-            <h2>Favourite Outfits <span class="section-count-badge">3 outfits</span></h2>
+        <div class="section-header" id="outfits-header">
+            <h2>Favourite Outfits <span class="section-count-badge" id="outfit-count">0 outfits</span></h2>
             <span class="section-note-text">Complete looks ready to wear or schedule</span>
         </div>
 
-        <div class="favourite-outfits-grid">
-            
-            <!-- Outfit Card 1 -->
-            <div class="outfit-card">
-                <div class="outfit-card-tag-row">
-                    <span class="outfit-card-tag">College / Casual</span>
-                    <span class="outfit-heart-icon"><i class="fa-solid fa-heart" style="color: rgb(245, 186, 228);"></i></span>
-                </div>
-                <h3 class="outfit-card-title">Cosy Campus Casual</h3>
-                <div class="outfit-preview-thumbnails">
-                    <div class="outfit-thumbnail-box"><img src="lilac ribbed cropped top.png" width="80%" height="60px"></div>
-                    <div class="outfit-thumbnail-box"><img src="highrise-jeans.png" width="80%" height="60px"></div>
-                    <div class="outfit-thumbnail-box"><img src="canvas court shoes.png" width="80%" height="60px"></div>
-                </div>
-                <p class="outfit-item-labels">White Tee · Light Jeans · Court Shoes</p>
-                <div class="outfit-card-footer">
-                    <span class="outfit-worn-text">Worn 14 times</span>
-                    <div class="outfit-card-buttons-group">
-                        <button class="outfit-card-button"><i class="fa-regular fa-calendar-days"></i> Plan Today</button>
-                        <button class="outfit-card-button">View Look</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Outfit Card 2 -->
-            <div class="outfit-card">
-                <div class="outfit-card-tag-row">
-                    <span class="outfit-card-tag">Smart Casual / Presentation</span>
-                    <span class="outfit-heart-icon"><i class="fa-solid fa-heart" style="color: rgb(245, 186, 228);"></i></span>
-                </div>
-                <h3 class="outfit-card-title">Presentation Day Blazer</h3>
-                <div class="outfit-preview-thumbnails">
-                    <div class="outfit-thumbnail-box"><img src="blazer.png" width="80%" height="60px"></div>
-                    <div class="outfit-thumbnail-box"><img src="black trousers.png" width="80%" height="60px"></div>
-                    <div class="outfit-thumbnail-box"><img src="loafers.png" width="80%" height="60px"></div>
-                </div>
-                <p class="outfit-item-labels">Outfit Blazer · Black Trousers · Loafers</p>
-                <div class="outfit-card-footer">
-                    <span class="outfit-worn-text">Worn 3 times</span>
-                    <div class="outfit-card-buttons-group">
-                        <button class="outfit-card-button"><i class="fa-regular fa-calendar-days"></i> Plan Today</button>
-                        <button class="outfit-card-button">View Look</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Outfit Card 3 -->
-            <div class="outfit-card">
-                <div class="outfit-card-tag-row">
-                    <span class="outfit-card-tag">Weekend / Relaxed</span>
-                    <span class="outfit-heart-icon"><i class="fa-solid fa-heart" style="color: rgb(245, 186, 228);"></i></span>
-                </div>
-                <h3 class="outfit-card-title">Sunday Matcha & Farmers Market</h3>
-                <div class="outfit-preview-thumbnails">
-                    <div class="outfit-thumbnail-box"><img src="creamcardigan.png" width="80%" height="60px"></div>
-                    <div class="outfit-thumbnail-box"><img src="floral skirt.png" width="80%" height="60px"></div>
-                    <div class="outfit-thumbnail-box"><img src="tote and sneakers.png" width="80%" height="60px"></div>
-                </div>
-                <p class="outfit-item-labels">Knitted Cardigan · Floral Skirt · Sneakers · Tote</p>
-                <div class="outfit-card-footer">
-                    <span class="outfit-worn-text">Worn 5 times</span>
-                    <div class="outfit-card-buttons-group">
-                        <button class="outfit-card-button"><i class="fa-regular fa-calendar-days"></i> Plan Today</button>
-                        <button class="outfit-card-button">View Look</button>
-                    </div>
-                </div>
-            </div>
-
+        <div class="favourite-outfits-grid" id="favourite-outfits-grid">
+            <!-- JS will load outfits here -->
         </div>
 
         <!-- SECTION 2: FAVOURITE CLOTHING ITEMS -->
-        <div class="section-header">
-            <h2>Favourite Clothing Items <span class="section-count-badge">♥ All Items</span></h2>
-            <div class="filter-buttons-row filter-buttons-row-inline">
-                <button class="filter-button active-filter-button">All Categories</button>
-                <button class="filter-button">Tops (3)</button>
-                <button class="filter-button">Bottoms (2)</button>
-                <button class="filter-button">Shoes (2)</button>
-                <button class="filter-button">Jackets (4)</button>
-            </div>
+        <div class="section-header" id="clothes-header">
+            <h2>Favourite Clothing Items <span class="section-count-badge" id="clothes-count">0 items</span></h2>
         </div>
 
-        <div class="favourite-items-grid">
-            
-            <!-- Item Card 1 -->
-            <div class="item-card">
-                <button class="favourite-heart-button"><i class="fa-solid fa-heart" style="color: rgb(245, 186, 228);"></i></button>
-                <div class="item-image"><img src="black denim jacket.png" width="80%" height="150px"></div>
-                <div class="item-text-area">
-                    <h3 class="item-name">Black Denim Jacket</h3>
-                    <p class="item-details">Autumn · Washed Black</p>
-                    <div class="item-card-footer">
-                        <span class="item-wear-count">Worn 12 times</span>
-                        <button class="add-to-outfit-button">+ Add to Outfit</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Item Card 2 -->
-            <div class="item-card">
-                <button class="favourite-heart-button"><i class="fa-solid fa-heart" style="color: rgb(245, 186, 228);"></i></button>
-                <div class="item-image"><img src="lilac ribbed cropped top.png" width="80%" height="150px"></div>
-                <div class="item-text-area">
-                    <h3 class="item-name">Lilac Ribbed Crop Top</h3>
-                    <p class="item-details">Summer · Ribbed Cotton</p>
-                    <div class="item-card-footer">
-                        <span class="item-wear-count">Worn 18 times</span>
-                        <button class="add-to-outfit-button">+ Add to Outfit</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Item Card 3 -->
-            <div class="item-card">
-                <button class="favourite-heart-button"><i class="fa-solid fa-heart" style="color: rgb(245, 186, 228);"></i></button>
-                <div class="item-image"><img src="highrise-jeans.png" width="80%" height="150px"></div>
-                <div class="item-text-area">
-                    <h3 class="item-name">Classic High-Rise Blue Jeans</h3>
-                    <p class="item-details">All Season · Light Blue</p>
-                    <div class="item-card-footer">
-                        <span class="item-wear-count">Worn 28 times</span>
-                        <button class="add-to-outfit-button">+ Add to Outfit</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Item Card 4 -->
-            <div class="item-card">
-                <button class="favourite-heart-button"><i class="fa-solid fa-heart" style="color: rgb(245, 186, 228);"></i></button>
-                <div class="item-image"><img src="pinkhoodie.png" width="80%" height="150px"></div>
-                <div class="item-text-area">
-                    <h3 class="item-name">Oversized Pastel Pink Hoodie</h3>
-                    <p class="item-details">Spring/Fall · Pastel Pink</p>
-                    <div class="item-card-footer">
-                        <span class="item-wear-count">Worn 14 times</span>
-                        <button class="add-to-outfit-button">+ Add to Outfit</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Item Card 5 -->
-            <div class="item-card">
-                <button class="favourite-heart-button"><i class="fa-solid fa-heart" style="color: rgb(245, 186, 228);"></i></button>
-                <div class="item-image"><img src="tennis-skirt.png" width="80%" height="150px"></div>
-                <div class="item-text-area">
-                    <h3 class="item-name">Pleated Tennis Skirt</h3>
-                    <p class="item-details">Summer · Crisp White</p>
-                    <div class="item-card-footer">
-                        <span class="item-wear-count">Worn 8 times</span>
-                        <button class="add-to-outfit-button">+ Add to Outfit</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Item Card 6 -->
-            <div class="item-card">
-                <button class="favourite-heart-button"><i class="fa-solid fa-heart" style="color: rgb(245, 186, 228);"></i></button>
-                <div class="item-image"><img src="canvas court shoes.png" width="80%" height="150px"></div>
-                <div class="item-text-area">
-                    <h3 class="item-name">Retro White Court Shoes</h3>
-                    <p class="item-details">Spring/Summer · White</p>
-                    <div class="item-card-footer">
-                        <span class="item-wear-count">Worn 16 times</span>
-                        <button class="add-to-outfit-button">+ Add to Outfit</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Item Card 7 -->
-            <div class="item-card">
-                <button class="favourite-heart-button"><i class="fa-solid fa-heart" style="color: rgb(245, 186, 228);"></i></button>
-                <div class="item-image"><img src="creamcardigan2.png" width="80%" height="150px"></div>
-                <div class="item-text-area">
-                    <h3 class="item-name">Cream Ribbed Knit Cardigan</h3>
-                    <p class="item-details">Autumn/Spring · Cream</p>
-                    <div class="item-card-footer">
-                        <span class="item-wear-count">Worn 19 times</span>
-                        <button class="add-to-outfit-button">+ Add to Outfit</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Item Card 8 -->
-            <div class="item-card">
-                <button class="favourite-heart-button"><i class="fa-solid fa-heart" style="color: rgb(245, 186, 228);"></i></button>
-                <div class="item-image"><img src="vintagebelt.png" width="80%" height="150px"></div>
-                <div class="item-text-area">
-                    <h3 class="item-name">Vintage Leather Belt</h3>
-                    <p class="item-details">All Season · Cognac Brown</p>
-                    <div class="item-card-footer">
-                        <span class="item-wear-count">Worn 21 times</span>
-                        <button class="add-to-outfit-button">+ Add to Outfit</button>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- WARDROBE TIP BANNER -->
-        <div class="wardrobe-tip-banner">
-            <div class="tip-text-group">
-                <span class="tip-icon">💡</span>
-                <div class="tip-text">
-                    <strong>Capsule Wardrobe Tip:</strong><br>
-                    Your top 5 favourites make up 40% of your weekly campus outfits. Pair your high-rise jeans with the Cream Cardigan for an easy Monday look.
-                </div>
-            </div>
-            <button class="tip-action-button">Try Suggested Match</button>
+        <div class="favourite-items-grid" id="favourite-clothes-grid">
+            <!-- JS will load clothes here -->
         </div>
 
     </main>
 
-    <!-- FOOTER SECTION -->
     <footer class="bottom-footer">
         <div class="footer-logo-text">Outfit Planner</div>
-        <p class="footer-copyright-text">© 2024 Outfit Planner. Designed for effortless daily styling.</p>
+        <p class="footer-copyright-text">© 2026 Outfit Planner. Designed for effortless daily styling.</p>
         <div class="footer-links-list">
             <a href="#">Privacy Policy</a>
             <a href="#">Terms of Service</a>
@@ -293,5 +89,55 @@
         </div>
     </footer>
 
+    <!-- ADD ITEM POPUP -->
+    <div id="popup">
+        <div class="popup-box">
+            <h2>Add New Clothing</h2>
+            <form id="myForm">
+                <div class="form-group">
+                    <label>Item Name</label>
+                    <input type="text" id="name" placeholder="e.g. Pastel Pink Hoodie" required>
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="category">
+                        <option value="Top">Top</option>
+                        <option value="Bottom">Bottom</option>
+                        <option value="Shoes">Shoes</option>
+                        <option value="Dress">Dress</option>
+                        <option value="Accessory">Accessory</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Colour</label>
+                    <input type="text" id="colour" placeholder="e.g. Cream" required>
+                </div>
+                <div class="form-group">
+                    <label>Occasion</label>
+                    <input type="text" id="occasion" placeholder="e.g. Casual" required>
+                </div>
+                <div class="form-group">
+                    <label>Season</label>
+                    <select id="season">
+                        <option value="All Seasons">All Seasons</option>
+                        <option value="Spring">Spring</option>
+                        <option value="Summer">Summer</option>
+                        <option value="Autumn">Autumn</option>
+                        <option value="Winter">Winter</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Select Item Picture</label>
+                    <input type="file" id="image-file" accept="image/*" required style="padding: 10px; border: 1px solid #cac9c9; border-radius: 5px;">
+                </div>
+                <div class="popup-buttons">
+                    <button type="button" id="closeBtn">Cancel</button>
+                    <button type="submit" class="saveBtn">Save Item</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="module" src="./javascript/favourites.js"></script>
 </body>
 </html>

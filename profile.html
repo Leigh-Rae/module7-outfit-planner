@@ -12,6 +12,7 @@
 
     <!-- CSS Link -->
     <link rel="stylesheet" href="Profile.css">
+    <link rel="stylesheet" href="addItemPopup.css"> 
 
      <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/0fc67ac136.js" crossorigin="anonymous"></script>
@@ -35,12 +36,12 @@
         </nav>
 
         <div class="header-right-side-buttons">
-            <button class="pink-rounded-button">+ Add Item</button>
+            <button class="pink-rounded-button" id="add-btn-header">+ Add Item</button>
             <div class="header-icon-group">
                <span> <i class="fa-regular fa-bell"></i> </span>
                 <span> <i class="fa-regular fa-heart"></i> </span>
             </div>
-            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=60" alt="User Profile Picture" class="user-profile-picture">
+            <img src="" alt="User Profile Picture" class="user-profile-picture" id="nav-profile-pic">
         </div>
     </header>
 
@@ -50,13 +51,12 @@
         <!-- PROFILE HERO SECTION -->
         <div class="profile-hero-card">
             <div class="profile-hero-avatar-area">
-                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&auto=format&fit=crop&q=80" alt="User Avatar" class="profile-hero-avatar">
-                <button class="edit-avatar-button" title="Change picture">📷</button>
+                <img src="" alt="User Avatar" class="profile-hero-avatar" id="profile-avatar">
             </div>
 
             <div class="profile-hero-info">
-                <h1>Emily Johnson <span class="verified-badge">✓ Verified</span></h1>
-                <p class="profile-username">@emily.styles · Cape Town, South Africa</p>
+                <h1><span id="profile-full-name">Loading...</span> <span class="verified-badge">✓ Verified</span></h1>
+                <p class="profile-username" id="profile-username">@loading · Cape Town, South Africa</p>
                 <p class="profile-bio">Final-year design student building a conscious capsule wardrobe. Lover of neutral tones, vintage denim, and iced matcha on campus. 🌿</p>
 
                 <div class="profile-hero-meta-row">
@@ -67,28 +67,28 @@
             </div>
 
             <div class="profile-hero-actions">
-                <button class="pink-rounded-button">✏️ Edit Profile</button>
-                <button class="outline-rounded-button">⚙️ Settings</button>
+                <button class="pink-rounded-button" id="edit-profile-btn">✏️ Edit Profile</button>
+             
             </div>
         </div>
 
         <!-- STYLE STATS ROW -->
         <div class="stats-row">
             <div class="stat-card">
-                <span class="stat-value">42</span>
+                <span class="stat-value" id="stat-wardrobe">0</span>
                 <span class="stat-label">Items in Wardrobe</span>
             </div>
             <div class="stat-card">
-                <span class="stat-value">18</span>
+                <span class="stat-value" id="stat-outfits">0</span>
                 <span class="stat-label">Saved Outfits</span>
             </div>
             <div class="stat-card">
-                <span class="stat-value">124</span>
+                <span class="stat-value" id="stat-planned">0</span>
                 <span class="stat-label">Days Planned</span>
             </div>
             <div class="stat-card">
-                <span class="stat-value">3.5 hrs</span>
-                <span class="stat-label">Time Saved This Month</span>
+                <span class="stat-value" id="stat-favourites">0</span>
+                <span class="stat-label">Favourites</span>
             </div>
         </div>
 
@@ -102,29 +102,28 @@
                 <div class="profile-panel">
                     <div class="profile-panel-header">
                         <h2>Personal Information</h2>
-                        <button class="small-text-action-button">Edit</button>
                     </div>
 
                     <div class="info-grid">
                         <div class="info-field">
                             <span class="info-label">Full Name</span>
-                            <span class="info-value">Emily Grace Johnson</span>
+                            <span class="info-value" id="info-name">Loading...</span>
                         </div>
                         <div class="info-field">
                             <span class="info-label">Email Address</span>
-                            <span class="info-value">emily.johnson@campus.edu</span>
+                            <span class="info-value" id="info-email">Loading...</span>
                         </div>
                         <div class="info-field">
                             <span class="info-label">Phone Number</span>
-                            <span class="info-value">+27 82 555 0142</span>
+                            <span class="info-value" id="info-phone">+27 82 555 0142</span>
                         </div>
                         <div class="info-field">
                             <span class="info-label">Date of Birth</span>
-                            <span class="info-value">14 March 2004</span>
+                            <span class="info-value" id="info-dob">14 March 2004</span>
                         </div>
                         <div class="info-field">
                             <span class="info-label">Location</span>
-                            <span class="info-value">Cape Town, WC</span>
+                            <span class="info-value" id="info-location">Cape Town, WC</span>
                         </div>
                         <div class="info-field">
                             <span class="info-label">Language</span>
@@ -137,7 +136,7 @@
                 <div class="profile-panel">
                     <div class="profile-panel-header">
                         <h2>Style Preferences</h2>
-                        <button class="small-text-action-button">Edit</button>
+                        <button class="small-text-action-button" onclick="alert('Style preferences coming soon!')">Edit</button>
                     </div>
 
                     <div class="preferences-block">
@@ -161,49 +160,38 @@
                             <span class="preference-tag">Campus Casual</span>
                         </div>
                     </div>
-
-                    <div class="preferences-block">
-                        <span class="preference-group-label">Favourite Occasions</span>
-                        <div class="preference-tag-row">
-                            <span class="preference-tag">Campus / University</span>
-                            <span class="preference-tag">Coffee Dates</span>
-                            <span class="preference-tag">Weekend Markets</span>
-                            <span class="preference-tag">Study Sessions</span>
-                        </div>
-                    </div>
                 </div>
 
                 <!-- Body & Measurements Panel -->
                 <div class="profile-panel">
                     <div class="profile-panel-header">
                         <h2>Body & Measurements</h2>
-                        <button class="small-text-action-button">Update</button>
                     </div>
 
                     <div class="info-grid">
                         <div class="info-field">
                             <span class="info-label">Height</span>
-                            <span class="info-value">165 cm</span>
+                            <span class="info-value" id="info-height">165 cm</span>
                         </div>
                         <div class="info-field">
                             <span class="info-label">Weight</span>
-                            <span class="info-value">58 kg</span>
+                            <span class="info-value" id="info-weight">58 kg</span>
                         </div>
                         <div class="info-field">
                             <span class="info-label">Top Size</span>
-                            <span class="info-value">S / UK 8</span>
+                            <span class="info-value" id="info-topsize">S / UK 8</span>
                         </div>
                         <div class="info-field">
                             <span class="info-label">Bottom Size</span>
-                            <span class="info-value">28 / UK 8</span>
+                            <span class="info-value" id="info-bottomsize">28 / UK 8</span>
                         </div>
                         <div class="info-field">
                             <span class="info-label">Shoe Size</span>
-                            <span class="info-value">UK 5 / EU 38</span>
+                            <span class="info-value" id="info-shoesize">UK 5 / EU 38</span>
                         </div>
                         <div class="info-field">
                             <span class="info-label">Body Type</span>
-                            <span class="info-value">Athletic / Balanced</span>
+                            <span class="info-value" id="info-bodytype">Athletic / Balanced</span>
                         </div>
                     </div>
                 </div>
@@ -223,12 +211,12 @@
                         <div class="account-usage-row">
                             <div class="account-usage-text">
                                 <strong>Wardrobe Capacity</strong>
-                                <span class="item-meta">42 of 75 items used</span>
+                                <span class="item-meta" id="wardrobe-meta">Loading...</span>
                             </div>
-                            <span class="usage-percent">56%</span>
+                            <span class="usage-percent" id="wardrobe-percent">0%</span>
                         </div>
                         <div class="usage-progress-bar">
-                            <div class="usage-progress-fill" style="width: 56%;"></div>
+                            <div class="usage-progress-fill" id="wardrobe-fill" style="width: 0%;"></div>
                         </div>
                     </div>
 
@@ -281,58 +269,6 @@
                                 <span class="badge-desc">Reached 40+ items in wardrobe</span>
                             </div>
                         </div>
-                        <div class="badge-item">
-                            <div class="badge-icon">💗</div>
-                            <div class="badge-text">
-                                <span class="badge-name">Favourites Curator</span>
-                                <span class="badge-desc">Saved 10+ outfits to favourites</span>
-                            </div>
-                        </div>
-                        <div class="badge-item">
-                            <div class="badge-icon">☕</div>
-                            <div class="badge-text">
-                                <span class="badge-name">Early Riser</span>
-                                <span class="badge-desc">Outfit picked before 8 AM ten times</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Recent Activity Panel -->
-                <div class="profile-panel">
-                    <div class="profile-panel-header">
-                        <h2>Recent Activity</h2>
-                    </div>
-
-                    <div class="activity-list">
-                        <div class="activity-item">
-                            <span class="activity-icon">👗</span>
-                            <div class="activity-text">
-                                <strong>Added "Cream Ribbed Cardigan"</strong>
-                                <span class="item-meta">2 hours ago</span>
-                            </div>
-                        </div>
-                        <div class="activity-item">
-                            <span class="activity-icon">📅</span>
-                            <div class="activity-text">
-                                <strong>Planned outfit for Thursday</strong>
-                                <span class="item-meta">Yesterday</span>
-                            </div>
-                        </div>
-                        <div class="activity-item">
-                            <span class="activity-icon">♥</span>
-                            <div class="activity-text">
-                                <strong>Favourited "Cosy Campus Casual"</strong>
-                                <span class="item-meta">3 days ago</span>
-                            </div>
-                        </div>
-                        <div class="activity-item">
-                            <span class="activity-icon">✏️</span>
-                            <div class="activity-text">
-                                <strong>Updated measurements</strong>
-                                <span class="item-meta">1 week ago</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
@@ -344,7 +280,7 @@
     <!-- FOOTER SECTION -->
     <footer class="bottom-footer">
         <div class="footer-logo-text">Outfit Planner</div>
-        <p class="footer-copyright-text">© 2024 Outfit Planner. Designed for effortless daily styling.</p>
+        <p class="footer-copyright-text">© 2026 Outfit Planner. Designed for effortless daily styling.</p>
         <div class="footer-links-list">
             <a href="#">Privacy Policy</a>
             <a href="#">Terms of Service</a>
@@ -353,5 +289,114 @@
         </div>
     </footer>
 
+    <!-- EDIT PROFILE POPUP -->
+    <div id="edit-profile-popup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center;">
+        <div style="background: white; padding: 30px; border-radius: 10px; width: 100%; max-width: 400px; max-height: 90vh; overflow-y: auto;">
+            <h2 style="margin-bottom: 20px; font-size: 1.4rem; color: #3b2f2f;">Edit Profile</h2>
+            
+            <form id="editProfileForm">
+                <div class="form-group" style="margin-bottom: 15px; display: flex; flex-direction: column;">
+                    <label style="font-weight: 600; font-size: 0.85rem; margin-bottom: 5px;">Full Name</label>
+                    <input type="text" id="edit-name" required style="padding: 10px; border: 1px solid #cac9c9; border-radius: 5px;">
+                </div>
+                <div class="form-group" style="margin-bottom: 15px; display: flex; flex-direction: column;">
+                    <label style="font-weight: 600; font-size: 0.85rem; margin-bottom: 5px;">Email Address</label>
+                    <input type="email" id="edit-email" required style="padding: 10px; border: 1px solid #cac9c9; border-radius: 5px;">
+                </div>
+                <div class="form-group" style="margin-bottom: 15px; display: flex; flex-direction: column;">
+                    <label style="font-weight: 600; font-size: 0.85rem; margin-bottom: 5px;">Phone Number</label>
+                    <input type="text" id="edit-phone" required style="padding: 10px; border: 1px solid #cac9c9; border-radius: 5px;">
+                </div>
+                <div class="form-group" style="margin-bottom: 15px; display: flex; flex-direction: column;">
+                    <label style="font-weight: 600; font-size: 0.85rem; margin-bottom: 5px;">Date of Birth</label>
+                    <input type="text" id="edit-dob" required style="padding: 10px; border: 1px solid #cac9c9; border-radius: 5px;">
+                </div>
+                <div class="form-group" style="margin-bottom: 15px; display: flex; flex-direction: column;">
+                    <label style="font-weight: 600; font-size: 0.85rem; margin-bottom: 5px;">Location</label>
+                    <input type="text" id="edit-location" required style="padding: 10px; border: 1px solid #cac9c9; border-radius: 5px;">
+                </div>
+                <div class="form-group" style="margin-bottom: 15px; display: flex; flex-direction: column;">
+                    <label style="font-weight: 600; font-size: 0.85rem; margin-bottom: 5px;">Height</label>
+                    <input type="text" id="edit-height" required style="padding: 10px; border: 1px solid #cac9c9; border-radius: 5px;">
+                </div>
+                <div class="form-group" style="margin-bottom: 15px; display: flex; flex-direction: column;">
+                    <label style="font-weight: 600; font-size: 0.85rem; margin-bottom: 5px;">Weight</label>
+                    <input type="text" id="edit-weight" required style="padding: 10px; border: 1px solid #cac9c9; border-radius: 5px;">
+                </div>
+                <div class="form-group" style="margin-bottom: 15px; display: flex; flex-direction: column;">
+                    <label style="font-weight: 600; font-size: 0.85rem; margin-bottom: 5px;">Top Size</label>
+                    <input type="text" id="edit-topsize" required style="padding: 10px; border: 1px solid #cac9c9; border-radius: 5px;">
+                </div>
+                <div class="form-group" style="margin-bottom: 15px; display: flex; flex-direction: column;">
+                    <label style="font-weight: 600; font-size: 0.85rem; margin-bottom: 5px;">Bottom Size</label>
+                    <input type="text" id="edit-bottomsize" required style="padding: 10px; border: 1px solid #cac9c9; border-radius: 5px;">
+                </div>
+                <div class="form-group" style="margin-bottom: 15px; display: flex; flex-direction: column;">
+                    <label style="font-weight: 600; font-size: 0.85rem; margin-bottom: 5px;">Shoe Size</label>
+                    <input type="text" id="edit-shoesize" required style="padding: 10px; border: 1px solid #cac9c9; border-radius: 5px;">
+                </div>
+                <div class="form-group" style="margin-bottom: 15px; display: flex; flex-direction: column;">
+                    <label style="font-weight: 600; font-size: 0.85rem; margin-bottom: 5px;">Body Type</label>
+                    <input type="text" id="edit-bodytype" required style="padding: 10px; border: 1px solid #cac9c9; border-radius: 5px;">
+                </div>
+                
+                <div style="display: flex; gap: 10px; margin-top: 20px;">
+                    <button type="button" id="cancel-edit-btn" style="flex: 1; padding: 12px; border-radius: 20px; border: 1px solid #cac9c9; background: white; cursor: pointer; font-weight: 500;">Cancel</button>
+                    <button type="submit" style="flex: 1; padding: 12px; border-radius: 20px; border: none; background: #f7a8bc; color: #3b2f2f; cursor: pointer; font-weight: 600;">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ADD ITEM POPUP -->
+    <div id="popup">
+        <div class="popup-box">
+            <h2>Add New Clothing</h2>
+            <form id="myForm">
+                <div class="form-group">
+                    <label>Item Name</label>
+                    <input type="text" id="name" placeholder="e.g. Pastel Pink Hoodie" required>
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="category">
+                        <option value="Top">Top</option>
+                        <option value="Bottom">Bottom</option>
+                        <option value="Shoes">Shoes</option>
+                        <option value="Dress">Dress</option>
+                        <option value="Accessory">Accessory</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Colour</label>
+                    <input type="text" id="colour" placeholder="e.g. Cream" required>
+                </div>
+                <div class="form-group">
+                    <label>Occasion</label>
+                    <input type="text" id="occasion" placeholder="e.g. Casual" required>
+                </div>
+                <div class="form-group">
+                    <label>Season</label>
+                    <select id="season">
+                        <option value="All Seasons">All Seasons</option>
+                        <option value="Spring">Spring</option>
+                        <option value="Summer">Summer</option>
+                        <option value="Autumn">Autumn</option>
+                        <option value="Winter">Winter</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Select Item Picture</label>
+                    <input type="file" id="image-file" accept="image/*" required style="padding: 10px; border: 1px solid #cac9c9; border-radius: 5px;">
+                </div>
+                <div class="popup-buttons">
+                    <button type="button" id="closeBtn">Cancel</button>
+                    <button type="submit" class="saveBtn">Save Item</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="module" src="./javascript/profile.js"></script>
 </body>
 </html>
