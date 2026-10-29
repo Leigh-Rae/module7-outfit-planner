@@ -1,5 +1,12 @@
+// ==========================================================
+// CREATE OUTFIT PAGE 
+// This file loads the user's clothes into categories, 
+// lets them select items, and saves the outfit.
+// ==========================================================
+
 import { getAllData, saveData } from "../db/db.js";
 
+// Variables to store the currently selected items.
 let selectedTop = null;
 let selectedBottom = null;
 let selectedShoes = null;
@@ -13,11 +20,11 @@ if (savedName && savedName !== "User") {
 }
 
 // 2. DROPDOWN TOGGLE LOGIC
+// Shows or hides the clothing grid based on the dropdown selection.
 window.toggleSection = function(section) {
     const grid = document.getElementById(section + "s-grid"); 
     const dropdown = document.getElementById(section + "-dropdown");
     
-    // Swap them to match your HTML
     if (dropdown.value === "closed") {
         grid.style.display = "grid";
     } else {
@@ -27,22 +34,28 @@ window.toggleSection = function(section) {
 
 // 3. LOAD ITEMS FROM FIREBASE
 async function load() {
-    const items = await getAllData("clothing_items");
+    const currentUserId = localStorage.getItem("userId");
+    const allItems = await getAllData("clothing_items");
     
+    // Filter to only show this user's items.
+    const items = allItems.filter(item => item.user_id === currentUserId);
+    
+    // Get the grid containers.
     const topsGrid = document.getElementById("tops-grid");
     const bottomsGrid = document.getElementById("bottoms-grid");
     const shoesGrid = document.getElementById("shoes-grid");
     const dressesGrid = document.getElementById("dresses-grid");
     const accessoriesGrid = document.getElementById("accessories-grid");
 
+    // Clear any existing content.
     topsGrid.innerHTML = ""; bottomsGrid.innerHTML = "";
     shoesGrid.innerHTML = ""; dressesGrid.innerHTML = ""; accessoriesGrid.innerHTML = "";
 
+    // Loop through each item and display it in the correct category.
     items.forEach(item => {
         const div = document.createElement("div");
         div.className = "clothing-item-card";
         
-        // THE IMAGE FIX IS HERE: It uses the image_url from your database
         div.innerHTML = `
             <div class="clothing-item-image-placeholder">
                 <img src="${item.image_url || 'placeholder.png'}" class="card-image" alt="${item.name}">
@@ -50,8 +63,10 @@ async function load() {
             <div class="clothing-item-name">${item.name}</div>
         `;
 
+        // Handle the click event for selecting the item.
         div.onclick = () => {
             if (item.category === "Accessory") {
+                // Accessories can be toggled on and off.
                 div.classList.toggle('selected-item-card');
                 const index = selectedAccessories.findIndex(a => a.name === item.name);
                 if (index > -1) {
@@ -60,6 +75,7 @@ async function load() {
                     selectedAccessories.push(item);
                 }
             } else {
+                // All other categories can only have one selection at a time.
                 div.parentElement.querySelectorAll('.clothing-item-card').forEach(box => {
                     box.classList.remove('selected-item-card');
                 });
@@ -70,10 +86,10 @@ async function load() {
                 if (item.category === "Shoes") selectedShoes = item;
                 if (item.category === "Dress") selectedDress = item;
             }
-            showPreview();
+            showPreview(); // Update the right-side preview.
         };
 
-        // Put in the correct grid
+        // Add the item to the correct grid based on its category.
         if (item.category === "Top") topsGrid.appendChild(div);
         if (item.category === "Bottom") bottomsGrid.appendChild(div);
         if (item.category === "Shoes") shoesGrid.appendChild(div);
@@ -83,6 +99,7 @@ async function load() {
 }
 
 // 4. SHOW PREVIEW & UPDATE COUNTER
+// Updates the right-hand panel with the selected items.
 function showPreview() {
     const preview = document.getElementById("preview-box");
     preview.innerHTML = ""; 
@@ -110,10 +127,12 @@ function showPreview() {
         count++;
     });
 
+    // Update the badge at the top.
     document.getElementById("item-count-badge").innerText = `${count} items selected`;
 }
 
 // 5. CLEAR BUTTON
+// Resets all selections when the user clicks "Clear Selection".
 document.getElementById("clear-btn").onclick = () => {
     selectedTop = null; selectedBottom = null; selectedShoes = null; selectedDress = null;
     selectedAccessories = []; 
@@ -127,19 +146,23 @@ document.getElementById("clear-btn").onclick = () => {
 };
 
 // 6. SAVE BUTTON
+// Saves the outfit to the database when clicked.
 document.getElementById("save-outfit-btn").onclick = async () => {
+    // Validate that at least a top or dress is selected.
     if (!selectedTop && !selectedDress) {
         alert("Please select at least a Top or a Dress!");
         return;
     }
 
+    // Combine all selected accessories into a single string.
     let accString = "None";
     if (selectedAccessories.length > 0) {
         accString = selectedAccessories.map(a => a.name).join(", ");
     }
 
+    // Build the outfit object.
     const outfit = {
-        user_id: "user_1",
+        user_id: localStorage.getItem("userId"), 
         name: document.getElementById("outfit-name").value,
         occasion: document.getElementById("outfit-occasion").value,
         season: document.getElementById("outfit-season").value,
@@ -148,18 +171,19 @@ document.getElementById("save-outfit-btn").onclick = async () => {
         shoes: selectedShoes ? selectedShoes.name : "None",
         dress: selectedDress ? selectedDress.name : "None",
         accessory: accString,
-        // Save the images so the Home page can use them!
         top_image: selectedTop ? selectedTop.image_url : "",
         bottom_image: selectedBottom ? selectedBottom.image_url : "",
         shoes_image: selectedShoes ? selectedShoes.image_url : ""
     };
 
+    // Save the outfit to the database.
     await saveData("outfits", outfit);
 
+    // Check if a date was selected to add to the planner.
     const plannedDate = document.getElementById("outfit-date").value;
     if (plannedDate !== "") {
         const newPlan = {
-            user_id: "user_1",
+            user_id: localStorage.getItem("userId"), 
             outfit_name: outfit.name,
             planned_date: plannedDate,
             is_worn: false
@@ -188,7 +212,7 @@ document.getElementById("myForm").onsubmit = async (e) => {
     const reader = new FileReader();
     reader.onload = async function(event) {
         const item = {
-            user_id: "user_1",
+            user_id: localStorage.getItem("userId"), 
             name: document.getElementById("name").value,
             category: document.getElementById("category").value,
             colour: document.getElementById("colour").value,
@@ -206,5 +230,5 @@ document.getElementById("myForm").onsubmit = async (e) => {
     reader.readAsDataURL(file);
 };
 
-// Run the load function
+// Run the load function.
 load();

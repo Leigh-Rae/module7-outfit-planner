@@ -1,9 +1,16 @@
+// ==========================================================
+// PROFILE PAGE 
+// This file loads user stats, handles the edit profile popup,
+// and displays the user's avatar.
+// ==========================================================
+
 import { getAllData, saveData } from "../db/db.js";
 
 // --- 1. USER PROFILE & DYNAMIC NAMES ---
 const savedName = localStorage.getItem("userName");
 const savedEmail = localStorage.getItem("userEmail") || "user@campus.edu"; 
 
+// If a user name is found in the browser memory, update the UI.
 if (savedName && savedName !== "User") {
     document.getElementById("nav-profile-pic").src = `https://ui-avatars.com/api/?name=${savedName}&background=f7a8bc&color=fff`;
     document.getElementById("profile-full-name").innerText = savedName;
@@ -27,7 +34,7 @@ document.getElementById("myForm").onsubmit = async (e) => {
     const reader = new FileReader();
     reader.onload = async function(event) {
         const item = {
-            user_id: "user_1",
+            user_id: localStorage.getItem("userId"), 
             name: document.getElementById("name").value,
             category: document.getElementById("category").value,
             colour: document.getElementById("colour").value,
@@ -48,18 +55,28 @@ document.getElementById("myForm").onsubmit = async (e) => {
 // --- 3. LOAD LIVE STATS FROM FIREBASE ---
 async function loadStats() {
     try {
-        const clothes = await getAllData("clothing_items");
-        const outfits = await getAllData("outfits");
-        const plans = await getAllData("planned_outfits");
+        const currentUserId = localStorage.getItem("userId"); 
+
+        // Fetch all data from the database.
+        const allClothes = await getAllData("clothing_items");
+        const allOutfits = await getAllData("outfits");
+        const allPlans = await getAllData("planned_outfits");
+
+        // Filter to only show this user's data.
+        const clothes = allClothes.filter(item => item.user_id === currentUserId);
+        const outfits = allOutfits.filter(item => item.user_id === currentUserId);
+        const plans = allPlans.filter(item => item.user_id === currentUserId);
 
         const favClothes = clothes.filter(c => c.is_favourite === true).length;
         const favOutfits = outfits.filter(o => o.is_favourite === true).length;
 
+        // Update the stat boxes.
         document.getElementById("stat-wardrobe").innerText = clothes.length;
         document.getElementById("stat-outfits").innerText = outfits.length;
         document.getElementById("stat-planned").innerText = plans.length;
         document.getElementById("stat-favourites").innerText = favClothes + favOutfits;
 
+        // Calculate the progress bar percentage.
         const maxCapacity = 75;
         let percentage = Math.round((clothes.length / maxCapacity) * 100);
         if (percentage > 100) percentage = 100; 
@@ -79,7 +96,7 @@ const editBtn = document.getElementById("edit-profile-btn");
 const cancelEditBtn = document.getElementById("cancel-edit-btn");
 const editForm = document.getElementById("editProfileForm");
 
-// Open popup and fill with current data
+// Open popup and fill with current data.
 editBtn.onclick = () => {
     document.getElementById("edit-name").value = document.getElementById("info-name").innerText;
     document.getElementById("edit-email").value = document.getElementById("info-email").innerText;
@@ -96,13 +113,14 @@ editBtn.onclick = () => {
     editPopup.style.display = "flex";
 };
 
-// Close popup
+// Close popup.
 cancelEditBtn.onclick = () => editPopup.style.display = "none";
 
-// Save the new data
+// Save the new data when the form is submitted.
 editForm.onsubmit = (e) => {
     e.preventDefault();
     
+    // Get the new values from the form.
     const newName = document.getElementById("edit-name").value;
     const newEmail = document.getElementById("edit-email").value; 
     const newPhone = document.getElementById("edit-phone").value;
@@ -115,7 +133,7 @@ editForm.onsubmit = (e) => {
     const newShoeSize = document.getElementById("edit-shoesize").value;
     const newBodyType = document.getElementById("edit-bodytype").value;
 
-    // Update the screen
+    // Update the page with the new values.
     document.getElementById("info-name").innerText = newName;
     document.getElementById("profile-full-name").innerText = newName;
     document.getElementById("profile-username").innerText = `@${newName.toLowerCase().replace(/\s/g, '')}`;
@@ -130,11 +148,11 @@ editForm.onsubmit = (e) => {
     document.getElementById("info-shoesize").innerText = newShoeSize;
     document.getElementById("info-bodytype").innerText = newBodyType;
 
-    // Save to browser memory so Home page updates
+    // Save to browser memory so the Home page updates.
     localStorage.setItem("userName", newName);
     localStorage.setItem("userEmail", newEmail); 
 
-    // Close popup
+    // Close popup.
     editPopup.style.display = "none";
     alert("Profile updated successfully!");
 };

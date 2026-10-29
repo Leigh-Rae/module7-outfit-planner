@@ -1,29 +1,41 @@
+// ==========================================================
+// FAVOURITES PAGE 
+// This file loads the user's favourite outfits and clothes
+// from Firebase and displays them on the page.
+// ==========================================================
+
 import { getAllData, saveData, updateData } from "../db/db.js";
 
+// Variables to store the lists of favourite items.
 let favOutfits = [];
 let favClothes = [];
-let allClothes = []; // Need this to find images for outfits
+let allClothes = []; 
 
 // --- 1. USER PROFILE & POPUP ---
+// Check if the user's name is saved in the browser memory.
 const savedName = localStorage.getItem("userName");
 if (savedName && savedName !== "User") {
+    // Set the profile picture to a generated avatar with their initial.
     document.getElementById("nav-profile-pic").src = `https://ui-avatars.com/api/?name=${savedName}&background=f7a8bc&color=fff`;
 }
 
+// Get the Add Item popup elements.
 const popup = document.getElementById("popup");
 document.getElementById("add-btn-header").onclick = () => popup.style.display = "flex";
 document.getElementById("closeBtn").onclick = () => popup.style.display = "none";
 
+// Handle the form submission for adding a new item.
 document.getElementById("myForm").onsubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Stop the page from reloading.
     const file = document.getElementById("image-file").files[0];
     if (!file) return;
     if (file.size > 1000000) { alert("Image too big! Pick under 1MB."); return; }
 
+    // Read the image file and convert it to Base64 text.
     const reader = new FileReader();
     reader.onload = async function(event) {
         const item = {
-            user_id: "user_1",
+            user_id: localStorage.getItem("userId"), 
             name: document.getElementById("name").value,
             category: document.getElementById("category").value,
             colour: document.getElementById("colour").value,
@@ -31,7 +43,7 @@ document.getElementById("myForm").onsubmit = async (e) => {
             season: document.getElementById("season").value,
             image_url: event.target.result,
             wear_count: 0,
-            is_favourite: true // Automatically favourite since they added it here!
+            is_favourite: true // Automatically set to true since they added it here.
         };
         await saveData("clothing_items", item);
         popup.style.display = "none";
@@ -43,12 +55,20 @@ document.getElementById("myForm").onsubmit = async (e) => {
 
 // --- 2. LOAD DATA FROM FIREBASE ---
 async function loadFavourites() {
-    const allOutfits = await getAllData("outfits");
-    allClothes = await getAllData("clothing_items");
+    const currentUserId = localStorage.getItem("userId");
 
-    // Filter only the ones marked as favourite
-    favOutfits = allOutfits.filter(o => o.is_favourite === true);
-    favClothes = allClothes.filter(c => c.is_favourite === true);
+    // Fetch all data from the database.
+    const allOutfitsData = await getAllData("outfits");
+    const allClothesData = await getAllData("clothing_items");
+
+    // Filter to only show items belonging to the logged-in user.
+    const myOutfits = allOutfitsData.filter(o => o.user_id === currentUserId);
+    const myClothes = allClothesData.filter(c => c.user_id === currentUserId);
+
+    // Filter again to only keep the ones marked as favourite.
+    favOutfits = myOutfits.filter(o => o.is_favourite === true);
+    favClothes = myClothes.filter(c => c.is_favourite === true);
+    allClothes = myClothes; // Save for looking up images later.
 
     renderOutfits();
     renderClothes();
@@ -60,13 +80,14 @@ function renderOutfits() {
     const grid = document.getElementById("favourite-outfits-grid");
     grid.innerHTML = "";
 
+    // Show a message if there are no favourite outfits.
     if (favOutfits.length === 0) {
         grid.innerHTML = "<p class='grey-page-subtitle'>No favourite outfits yet.</p>";
         return;
     }
 
+    // Loop through each outfit and create a card for it.
     favOutfits.forEach(outfit => {
-        // Find the 3 images from the wardrobe
         let topPic = allClothes.find(c => c.name === outfit.top)?.image_url || "placeholder.png";
         let bottomPic = allClothes.find(c => c.name === outfit.bottom)?.image_url || "placeholder.png";
         let shoesPic = allClothes.find(c => c.name === outfit.shoes)?.image_url || "placeholder.png";
@@ -123,6 +144,7 @@ function renderClothes() {
 }
 
 // --- 5. REMOVE FROM FAVOURITES ---
+// Update the database to set is_favourite back to false.
 window.removeFavOutfit = async function(id) {
     await updateData("outfits", id, { is_favourite: false });
     loadFavourites();
@@ -144,6 +166,7 @@ function updateCounts() {
 }
 
 // --- 7. FILTERING LOGIC ---
+// Toggle the display of the outfits and clothes sections based on the clicked filter.
 document.getElementById("filter-all").onclick = (e) => {
     setActiveButton(e.target);
     document.getElementById("outfits-header").style.display = "flex";
@@ -173,5 +196,5 @@ function setActiveButton(clickedBtn) {
     clickedBtn.classList.add("active-filter-button");
 }
 
-// Start
+// Start the page.
 loadFavourites();

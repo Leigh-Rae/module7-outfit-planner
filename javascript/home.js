@@ -1,3 +1,9 @@
+// ==========================================================
+// HOME PAGE
+// This file loads the user's data and displays the stats, 
+// today's date, today's outfit, and saved outfits.
+// ==========================================================
+
 import { getAllData, saveData } from "../db/db.js";
 
 // --- 1. SHOW USER NAME ---
@@ -14,12 +20,19 @@ document.getElementById("today-date").innerHTML = `<img width="21" height="21" s
 // --- 3. LOAD EVERYTHING FROM FIREBASE ---
 async function loadHomePage() {
     try {
-        // Get all data from Firebase
-        const clothes = await getAllData("clothing_items");
-        const outfits = await getAllData("outfits");
-        const planned = await getAllData("planned_outfits");
+        const currentUserId = localStorage.getItem("userId");
 
-        // UPDATE THE STAT BOXES
+        // Fetch all data from the database.
+        const allClothes = await getAllData("clothing_items");
+        const allOutfits = await getAllData("outfits");
+        const allPlanned = await getAllData("planned_outfits");
+
+        // Filter to only show the logged-in user's data.
+        const clothes = allClothes.filter(item => item.user_id === currentUserId);
+        const outfits = allOutfits.filter(item => item.user_id === currentUserId);
+        const planned = allPlanned.filter(item => item.user_id === currentUserId);
+
+        // Update the 4 stat boxes.
         document.getElementById("wardrobe-count").innerText = clothes.length;
         document.getElementById("outfit-count").innerText = outfits.length;
         document.getElementById("planned-count").innerText = planned.length;
@@ -29,10 +42,10 @@ async function loadHomePage() {
         const todayContainer = document.getElementById("today-outfit-container");
         todayContainer.innerHTML = "";
 
-        // Format today's date to match what is saved in Firebase (YYYY-MM-DD)
+        // Get today's date in YYYY-MM-DD format.
         const dateString = new Date().toISOString().split("T")[0]; 
         
-        // Find if there is an outfit planned for today
+        // Find if there is an outfit planned for today.
         let todayPlan = null;
         for (let i = 0; i < planned.length; i++) {
             if (planned[i].planned_date === dateString) {
@@ -40,8 +53,8 @@ async function loadHomePage() {
             }
         }
 
+        // If there is a plan, display the outfit details.
         if (todayPlan) {
-            // Find the images for the planned outfit
             const outfitObj = outfits.find(o => o.name === todayPlan.outfit_name);
             
             if (outfitObj) {
@@ -63,6 +76,7 @@ async function loadHomePage() {
         const savedContainer = document.getElementById("saved-outfits-container");
         savedContainer.innerHTML = "";
 
+        // Loop through each outfit and display it.
         for (let i = 0; i < outfits.length; i++) {
             let outfit = outfits[i];
 
@@ -87,6 +101,7 @@ async function loadHomePage() {
         }
 
         // --- 6. ATTACH CLICK EVENTS TO WEAR THIS BUTTONS ---
+        // Find all "Wear This" buttons and attach an event listener.
         const wearButtons = document.querySelectorAll('.wear-btn');
         for (let i = 0; i < wearButtons.length; i++) {
             wearButtons[i].onclick = () => {
@@ -101,23 +116,19 @@ async function loadHomePage() {
 }
 
 // --- 7. WEAR THIS FUNCTION ---
+// Saves the chosen outfit to today's date in the database.
 async function wearThis(outfitName) {
-    // 1. Get today's date (e.g., "2026-10-28")
     const todayDate = new Date().toISOString().split("T")[0]; 
 
-    // 2. Create the plan object
     const newPlan = {
-        user_id: "user_1",
+        user_id: localStorage.getItem("userId"), 
         outfit_name: outfitName,
         planned_date: todayDate,
         is_worn: true
     };
 
     try {
-        // 3. Save it to the 'planned_outfits' collection in Firebase
         await saveData("planned_outfits", newPlan);
-        
-        // 4. Tell the user it worked and refresh the page
         alert("Outfit planned for today!");
         location.reload(); 
     } catch (error) {
@@ -132,25 +143,25 @@ document.querySelector(".add-clothing-button").onclick = () => popup.style.displ
 document.querySelector(".add-item-button").onclick = () => popup.style.display = "flex";
 document.getElementById("closeBtn").onclick = () => popup.style.display = "none";
 
+// Handle the form submission.
 document.getElementById("myForm").onsubmit = async (e) => {
     e.preventDefault();
     const file = document.getElementById("image-file").files[0];
     if (!file) return;
-    if (file.size > 1000000) {
-        alert("Image too big! Pick an image smaller than 1MB.");
-        return;
-    }
+    if (file.size > 1000000) { alert("Image too big! Pick under 1MB."); return; }
 
     const reader = new FileReader();
     reader.onload = async function(event) {
         const item = {
-            user_id: "user_1",
+            user_id: localStorage.getItem("userId"), 
             name: document.getElementById("name").value,
             category: document.getElementById("category").value,
             colour: document.getElementById("colour").value,
             occasion: document.getElementById("occasion").value,
             season: document.getElementById("season").value,
-            image_url: event.target.result
+            image_url: event.target.result,
+            wear_count: 0,
+            is_favourite: false
         };
         await saveData("clothing_items", item);
         popup.style.display = "none";
@@ -159,5 +170,5 @@ document.getElementById("myForm").onsubmit = async (e) => {
     reader.readAsDataURL(file);
 };
 
-// Run the page loader
+// Run the page loader.
 loadHomePage();

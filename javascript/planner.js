@@ -1,5 +1,12 @@
+// ==========================================================
+// PLANNER PAGE 
+// This file builds the calendar, loads the user's planned 
+// outfits, and handles the "Quick Assign" feature.
+// ==========================================================
+
 import { getAllData, saveData } from "../db/db.js";
 
+// Variables for the calendar and stored data.
 let currentDate = new Date();
 let selectedDate = new Date().toISOString().split("T")[0]; 
 let allOutfits = [];
@@ -25,7 +32,7 @@ document.getElementById("myForm").onsubmit = async (e) => {
     const reader = new FileReader();
     reader.onload = async function(event) {
         const item = {
-            user_id: "user_1",
+            user_id: localStorage.getItem("userId"), 
             name: document.getElementById("name").value,
             category: document.getElementById("category").value,
             colour: document.getElementById("colour").value,
@@ -45,9 +52,17 @@ document.getElementById("myForm").onsubmit = async (e) => {
 
 // 2. LOAD DATA & BUILD CALENDAR
 async function initPlanner() {
-    allOutfits = await getAllData("outfits");
-    allPlans = await getAllData("planned_outfits");
-    allClothes = await getAllData("clothing_items");
+    const currentUserId = localStorage.getItem("userId");
+
+    // Fetch data from the database.
+    const fetchedOutfits = await getAllData("outfits");
+    const fetchedPlans = await getAllData("planned_outfits");
+    const fetchedClothes = await getAllData("clothing_items");
+    
+    // Filter to only keep this user's data.
+    allOutfits = fetchedOutfits.filter(item => item.user_id === currentUserId);
+    allPlans = fetchedPlans.filter(item => item.user_id === currentUserId);
+    allClothes = fetchedClothes.filter(item => item.user_id === currentUserId);
     
     renderCalendar();
     renderQuickAssign();
@@ -64,6 +79,7 @@ function renderCalendar() {
     const daysContainer = document.getElementById("calendar-days-container");
     daysContainer.innerHTML = "";
 
+    // Calculate how many empty boxes we need for the start of the month.
     const firstDay = new Date(year, month, 1).getDay();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
     let emptyStartBoxes = (firstDay === 0) ? 6 : firstDay - 1;
@@ -72,6 +88,7 @@ function renderCalendar() {
         daysContainer.innerHTML += `<div class="calendar-day-cell empty-day-cell"></div>`;
     }
 
+    // Loop through each day and create a cell.
     for (let day = 1; day <= daysInMonth; day++) {
         const formattedDate = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
         const todayStr = new Date().toISOString().split("T")[0];
@@ -80,6 +97,7 @@ function renderCalendar() {
         let isTodayClass = (formattedDate === todayStr) ? "highlighted-today-cell" : "";
         let eventHTML = "";
 
+        // If there is a plan for this day, show it in the cell.
         if (planForDay) {
             eventHTML = `
                 <div class="calendar-event-box ${formattedDate === todayStr ? 'event-highlighted' : ''}">
@@ -88,7 +106,6 @@ function renderCalendar() {
             `;
         }
 
-        // Note: We attach the onclick to the div itself
         daysContainer.innerHTML += `
             <div class="calendar-day-cell ${isTodayClass}" onclick="selectDay('${formattedDate}', '${monthNames[month]}', ${day})">
                 <div class="day-number-header">
@@ -102,6 +119,7 @@ function renderCalendar() {
 }
 
 // 3. SELECTED DAY PANEL
+// Updates the side panel when a day is clicked.
 window.selectDay = function(dateStr, monthName, dayNum) {
     selectedDate = dateStr;
     document.getElementById("selected-date-text").innerText = `${monthName} ${dayNum}`;
@@ -114,6 +132,7 @@ function renderSelectedDay() {
 
     let plan = allPlans.find(p => p.planned_date === selectedDate);
 
+    // If there is an outfit planned for this date, show it.
     if (plan) {
         let outfit = allOutfits.find(o => o.name === plan.outfit_name);
         
@@ -152,6 +171,7 @@ function renderSelectedDay() {
             `;
         }
     } else {
+        // If no outfit is planned, show a button to create one.
         content.innerHTML = `
             <p class="grey-page-subtitle" style="margin-bottom: 20px;">No outfit planned for this day.</p>
             <button class="change-outfit-button" style="width: 100%;" onclick="window.location.href='outfit.html'">+ Plan New Outfit</button>
@@ -160,6 +180,7 @@ function renderSelectedDay() {
 }
 
 // 4. QUICK ASSIGN
+// Shows the 3 most recent outfits in the side panel.
 function renderQuickAssign() {
     const list = document.getElementById("quick-assign-list");
     list.innerHTML = "";
@@ -181,9 +202,10 @@ function renderQuickAssign() {
     });
 }
 
+// Assigns a saved outfit to the currently selected date.
 window.quickAssign = async function(outfitName) {
     const newPlan = {
-        user_id: "user_1",
+        user_id: localStorage.getItem("userId"), 
         outfit_name: outfitName,
         planned_date: selectedDate,
         is_worn: false
@@ -194,7 +216,8 @@ window.quickAssign = async function(outfitName) {
     initPlanner(); 
 };
 
-// --- 5. ATTACH BUTTON CLICKS  ---
+// --- 5. ATTACH BUTTON CLICKS ---
+// Calendar navigation buttons.
 document.getElementById("prev-btn").onclick = () => {
     currentDate.setMonth(currentDate.getMonth() - 1);
     renderCalendar();
@@ -210,5 +233,5 @@ document.getElementById("today-btn").onclick = () => {
     renderCalendar();
 };
 
-// Start everything
+// Start everything.
 initPlanner();

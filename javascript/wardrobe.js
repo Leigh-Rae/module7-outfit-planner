@@ -1,8 +1,14 @@
+// ==========================================================
+// WARDROBE PAGE (wardrobe.js)
+// This file loads the user's clothing items, handles search,
+// filters, favourites, deleting, and the "Load More" feature.
+// ==========================================================
+
 import { getAllData, saveData, updateData, deleteData } from "../db/db.js";
 
 // --- 1. VARIABLES ---
-let allProducts = []; // Holds all items from Firebase
-let displayedCount = 8; // Show 8 at a time
+let allProducts = []; 
+let displayedCount = 8; 
 let currentFilter = "All";
 let searchText = "";
 let filterColour = "All";
@@ -12,22 +18,26 @@ let filterOccasion = "All";
 // --- 2. SHOW USER PROFILE INITIAL ---
 const savedName = localStorage.getItem("userName");
 if (savedName && savedName !== "User") {
-    // If there's no image, just put the first letter of their name
     document.getElementById("nav-profile-pic").src = `https://ui-avatars.com/api/?name=${savedName}&background=f7a8bc&color=fff`;
 }
 
 // --- 3. LOAD DATA FROM FIREBASE ---
 async function loadWardrobe() {
-    allProducts = await getAllData("clothing_items");
+    const currentUserId = localStorage.getItem("userId");
+    const fetchedProducts = await getAllData("clothing_items");
+    
+    // Only keep this user's items.
+    allProducts = fetchedProducts.filter(item => item.user_id === currentUserId);
+    
     renderGrid();
 }
 
 // --- 4. RENDER THE GRID ---
 function renderGrid() {
     const grid = document.getElementById("wardrobe-grid");
-    grid.innerHTML = ""; // Clear old items
+    grid.innerHTML = ""; 
 
-    // Filter the items based on search and dropdowns
+    // Filter the items based on the search bar and dropdowns.
     let filtered = allProducts.filter(item => {
         let matchesSearch = item.name.toLowerCase().includes(searchText.toLowerCase());
         let matchesCategory = (currentFilter === "All" || item.category === currentFilter);
@@ -38,10 +48,10 @@ function renderGrid() {
         return matchesSearch && matchesCategory && matchesColour && matchesSeason && matchesOccasion;
     });
 
-    // Show only the first  items (e.g., 8)
+    // Only show a certain number of items at a time.
     let itemsToShow = filtered.slice(0, displayedCount);
 
-    // Draw the cards
+    // Loop through the items and create a card for each.
     itemsToShow.forEach(item => {
         let heart = item.is_favourite ? '<i class="fa-solid fa-heart" style="color: #f7a8bc;"></i>' : '<i class="fa-regular fa-heart"></i>';
         
@@ -64,10 +74,10 @@ function renderGrid() {
         `;
     });
 
-    // Update the "Showing X of Y items" text
+    // Update the "Showing X of Y items" text.
     document.getElementById("item-count-text").innerText = `Showing ${itemsToShow.length} of ${filtered.length} items`;
 
-    // Hide the "Load More" button if we've shown everything
+    // Hide or show the "Load More" button.
     if (itemsToShow.length >= filtered.length) {
         document.getElementById("load-more-btn").style.display = "none";
     } else {
@@ -76,56 +86,56 @@ function renderGrid() {
 }
 
 // --- 5. FAVOURITE SYSTEM ---
+// Toggle the favourite status of an item.
 window.toggleFavourite = async function(id, currentStatus) {
-    // Flip the status (true becomes false, false becomes true)
     await updateData("clothing_items", id, { is_favourite: !currentStatus });
-    // Reload data
     loadWardrobe(); 
 };
 
 // --- 6. DELETE SYSTEM ---
+// Delete an item after asking for confirmation.
 window.deleteItem = async function(id) {
-    // Show confirm box
     const confirmDelete = confirm("Are you sure you want to delete this item?");
-    
     if (confirmDelete) {
         await deleteData("clothing_items", id);
-        loadWardrobe(); // Reload the grid
+        loadWardrobe(); 
     }
 };
 
 // --- 7. FILTER & SEARCH EVENTS ---
+// Update the search text and re-render the grid.
 document.getElementById("search-bar").addEventListener("input", (e) => {
     searchText = e.target.value;
-    displayedCount = 8; // Reset pagination on new search
+    displayedCount = 8; 
     renderGrid();
 });
 
+// Update the colour filter.
 document.getElementById("filter-colour").addEventListener("change", (e) => {
     filterColour = e.target.value;
     displayedCount = 8;
     renderGrid();
 });
 
+// Update the season filter.
 document.getElementById("filter-season").addEventListener("change", (e) => {
     filterSeason = e.target.value;
     displayedCount = 8;
     renderGrid();
 });
 
+// Update the occasion filter.
 document.getElementById("filter-occasion").addEventListener("change", (e) => {
     filterOccasion = e.target.value;
     displayedCount = 8;
     renderGrid();
 });
 
-// Category Buttons
+// Handle clicking the category buttons.
 const catBtns = document.querySelectorAll('.category-button');
 catBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
-        // Remove active class from all buttons
         catBtns.forEach(b => b.classList.remove('active-category'));
-        // Add active class to clicked button
         e.target.classList.add('active-category');
         
         currentFilter = e.target.getAttribute('data-category');
@@ -134,7 +144,7 @@ catBtns.forEach(btn => {
     });
 });
 
-// Clear Filters
+// Reset all filters to their default state.
 document.getElementById("clear-filters").addEventListener("click", () => {
     searchText = "";
     filterColour = "All";
@@ -143,30 +153,27 @@ document.getElementById("clear-filters").addEventListener("click", () => {
     currentFilter = "All";
     displayedCount = 8;
     
-    // Reset HTML inputs
     document.getElementById("search-bar").value = "";
     document.getElementById("filter-colour").value = "All";
     document.getElementById("filter-season").value = "All";
     document.getElementById("filter-occasion").value = "All";
     
-    // Reset category buttons
     catBtns.forEach(b => b.classList.remove('active-category'));
     document.querySelector('[data-category="All"]').classList.add('active-category');
     
     renderGrid();
 });
 
-// Load More Button
+// Load more items when the button is clicked.
 document.getElementById("load-more-btn").addEventListener("click", () => {
-    displayedCount += 8; // Add 8 more items
+    displayedCount += 8; 
     renderGrid();
 });
 
-
 // --- 8. ADD ITEM POPUP ---
 const popup = document.getElementById("popup");
-document.querySelector(".pink-button").onclick = () => popup.style.display = "flex"; // Header button
-document.querySelector(".page-title-row .pink-button").onclick = () => popup.style.display = "flex"; // Top button
+document.querySelector(".pink-button").onclick = () => popup.style.display = "flex"; 
+document.querySelector(".page-title-row .pink-button").onclick = () => popup.style.display = "flex"; 
 document.getElementById("closeBtn").onclick = () => popup.style.display = "none";
 
 document.getElementById("myForm").onsubmit = async (e) => {
@@ -174,7 +181,6 @@ document.getElementById("myForm").onsubmit = async (e) => {
     const file = document.getElementById("image-file").files[0];
     if (!file) return;
 
-    // Check if file is too big (1MB limit)
     if (file.size > 1000000) {
         alert("Image too big! Pick an image smaller than 1MB.");
         return;
@@ -183,7 +189,7 @@ document.getElementById("myForm").onsubmit = async (e) => {
     const reader = new FileReader();
     reader.onload = async function(event) {
         const item = {
-            user_id: "user_1",
+            user_id: localStorage.getItem("userId"), 
             name: document.getElementById("name").value,
             category: document.getElementById("category").value,
             colour: document.getElementById("colour").value,
@@ -197,10 +203,10 @@ document.getElementById("myForm").onsubmit = async (e) => {
         await saveData("clothing_items", item);
         popup.style.display = "none";
         alert("Item added!");
-        location.reload(); // Reload to show new item
+        location.reload(); 
     };
     reader.readAsDataURL(file);
 };
 
-// START
+// Start the page.
 loadWardrobe();
