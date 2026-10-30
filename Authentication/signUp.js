@@ -2,13 +2,11 @@
 // SIGN UP HANDLER 
 // This file handles the registration button on the Sign Up page.
 // It validates passwords, creates the user in Firebase Auth, 
-// and saves their details to the Firestore database.
+// and redirects them to the login page.
 // ==========================================================
 
 // Import the signUp function from our authentication file.
 import { signUp } from "./auth.js";
-// Import the saveData function so we can add the new user to Firestore.
-import { saveData } from "../db/db.js"; 
 
 // Add a click event listener to the Sign Up button.
 document.getElementById("signUp").addEventListener("click", async function () {
@@ -23,24 +21,21 @@ document.getElementById("signUp").addEventListener("click", async function () {
     // Check if the password and confirm password fields match.
     if (password === confirmPassword) {
       
-      // 1. Create the user in Firebase Authentication using the imported function.
+      // 1. Create the user in Firebase Authentication AND the Firestore database.
+      // (auth.js handles the database saving for us).
       await signUp(email, password, fullname);
       
-      // 2. Prepare the user object to save in the Firestore "users" collection.
-      // We use Capital E and Capital F to match the database structure.
-      const newUser = {
-          Email: email,        
-          Full_Name: fullname  
-      };
-      
-      // Save the new user document to the "users" collection in the database.
-      await saveData("users", newUser);
+      // 2. Clear any old user data from the browser memory.
+      // This stops the new user from seeing the previous user's name.
+      localStorage.clear();
 
-      // Log a success message to the console.
+      // 3. Log a success message and alert the user.
       console.log("Sign-up successful!");
+      alert("Account created successfully! Please log in.");
       
-      // Redirect the user to the Home page after successful sign-up.
-      window.location.href = "home.html";
+      // 4. Redirect the user to the Login page.
+      // They must log in so the app can save their new name and ID to the browser.
+      window.location.href = "login.html";
       
     } else {
       // If passwords do not match, show an alert and stop the process.
